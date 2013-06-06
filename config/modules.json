@@ -1,0 +1,16 @@
+[
+    {   
+        "processor":"zway",
+        "name" : "mainZwaveControler",
+        "poolInterval" : 1000,
+        "params": { "ip" : "127.0.0.1", "port" : "80", "path" : "/" },
+        "active" : true
+    },
+    {   
+        "processor":"on-weather",
+        "name" : "homeWeatherStation",
+        "poolInterval" : 20000,
+        "params": { "ip" : "think-free.me", "port" : "80", "path" : "/weather/" },
+        "active" : true
+    }
+]

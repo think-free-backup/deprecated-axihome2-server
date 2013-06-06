@@ -1,0 +1,20 @@
+{
+    "server" : "on-domo",
+    "version" : "0.0.1",
+    "debug" : false,
+    "ports" : {
+        "socketIo" : 20000,
+        "socket" : 20001,
+        "rest" : 20002,
+        "static" : 20003
+    },
+    "use" : {
+        "rest" : false,
+        "socket" : true,
+        "ssl" : false,
+        "socketIo" : false,
+        "page" : false
+    },
+    "processExitOnError" : false,
+    "logFilePath" : "."
+}
