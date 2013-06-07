@@ -3,7 +3,7 @@
         "processor":"zway",
         "name" : "mainZwaveControler",
         "poolInterval" : 1000,
-        "params": { "ip" : "127.0.0.1", "port" : "80", "path" : "/" },
+        "params": { "ip" : "172.16.1.15", "port" : "8083", "path" : "/" },
         "active" : true
     },
     {   
@@ -12,5 +12,12 @@
         "poolInterval" : 20000,
         "params": { "ip" : "think-free.me", "port" : "80", "path" : "/weather/" },
         "active" : true
+    },
+    {   
+        "processor":"yahoo-weather",
+        "name" : "mainWeather",
+        "poolInterval" : 1800000,
+        "params": { "city" : "Valencia" },
+        "active" : false
     }
 ]

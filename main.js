@@ -31,12 +31,10 @@ exports.init = function(config){
             poolers[p.processor].run(p.name, p.poolInterval, p.params, db);
     }
 
-
     db.setSaveCallback(function(message){
 
-        soc.broadcast(message);
+        soc.broadcast({type : "setVariable", body : {variable : "mainMenu", option:  "", value : {modules : message }}});
     });
-
 }
 
 // ### clientConnected
@@ -45,7 +43,7 @@ exports.init = function(config){
 
 exports.clientConnected = function(socket){
 
-    socket.send(db.getAll());
+    console.log("Client connected : " + socket.host() + ":" + socket.port());
 }
 
 // ### clientDisconnected
@@ -53,7 +51,8 @@ exports.clientConnected = function(socket){
 // Client disconnected callback
 
 exports.clientDisconnected = function(socket){
-    
+ 
+    console.log("Client disconnected : " + socket.host() + ":" + socket.port());   
 }
 
 // ## Login/Logout managment

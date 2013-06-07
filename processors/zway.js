@@ -35,13 +35,15 @@ function pool(){
 
     var client = restify.createJsonClient({
         url: 'http://' + m_params.ip + ':' + m_params.port,
-        version: '*'
+        version: '*',
+        retry: {'retries': 0}
     });
 
     client.get(m_params.path + 'ZWaveAPI/Data/0', function(err, req, res, obj) {
 
         if (err){
             console.log(err);
+            setTimeout(pool, m_poolInterval * 2);
             return;
         }
 
@@ -61,7 +63,7 @@ function pool(){
                 //console.log("Unknown device found in network : " + type);
             }
         }
-
+        client.close();
         setTimeout(pool, m_poolInterval);
     });
 }

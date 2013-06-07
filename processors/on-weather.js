@@ -44,6 +44,7 @@ function pool(){
 
         if (err){
             console.log(err);
+            setTimeout(pool, m_poolInterval * 2);
             return;
         }
 
@@ -64,6 +65,7 @@ function pool(){
             }    
         }
 
+        client.close();
         setTimeout(pool, m_poolInterval);
     });
 }

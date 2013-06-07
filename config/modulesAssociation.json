@@ -1,0 +1,4 @@
+[
+    {"module" : "mainZwaveControler-BinaryPowerSwitch-2", "place" : "Salon"},
+    {"module" : "mainZwaveControler-RoutingMultilevelSwitch-3", "place" : "Salon"}
+]
