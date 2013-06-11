@@ -99,7 +99,7 @@ objs.pressure = function () {};
 
             pooler : m_poolName,
             type : "pressure",
-            deviceId : "1",
+            deviceId : "0",
             values : [{value : value}],
             actuators : []
         }
@@ -118,7 +118,7 @@ objs.rain_day_total = function () {};
 
             pooler : m_poolName,
             type : "rain_day",
-            deviceId : "1",
+            deviceId : "0",
             values : [{value : value}],
             actuators : []
         }
@@ -136,7 +136,7 @@ objs.wind_dir = function () {};
 
             pooler : m_poolName,
             type : "wind_dir",
-            deviceId : "1",
+            deviceId : "0",
             values : [{value : value}],
             actuators : []
         }
@@ -154,7 +154,7 @@ objs.wind_speed = function () {};
 
             pooler : m_poolName,
             type : "wind_speed",
-            deviceId : "1",
+            deviceId : "0",
             values : [{value : value}],
             actuators : []
         }

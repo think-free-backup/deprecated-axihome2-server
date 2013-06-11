@@ -2,6 +2,7 @@
 var log = require('../lib/lib-log');
 var soc = require("unified.socket/unified.socket.js");
 var db = require('./lib/lib-memory-database.js');
+var uuid = require('node-uuid');
 
 // ## Init and socket connection callback
 /* ***************************************************************************** */
@@ -14,7 +15,7 @@ exports.init = function(config){
     
     log.write("on-domo", "Starting application");
 
-    var call_list = require('../lib/lib-config').load('./config/modules.json');
+    var call_list = require('../lib/lib-config').load('/config/modules.json');
     var poolers = [];
 
     require("fs").readdirSync("./application/processors/").forEach(function(file) {
@@ -31,9 +32,11 @@ exports.init = function(config){
             poolers[p.processor].run(p.name, p.poolInterval, p.params, db);
     }
 
-    db.setSaveCallback(function(message){
+    db.setSaveCallback(function(key, value){
 
-        soc.broadcast({type : "setVariable", body : {variable : "mainMenu", option:  "", value : {modules : message }}});
+        //console.log(message);
+
+        soc.broadcast({type : "setVariable", body : {variable : key, option:  "", value : value}});
     });
 }
 
@@ -67,6 +70,13 @@ exports.clientDisconnected = function(socket){
 
 exports.login = function(user,password,device,callback){
 
+    var date =new Date();
+    var dt = new Date(date.getTime() + 24 * 60 * 60 * 1000).toISOString().replace(/T/, ' ').replace(/\..+/, '');
+    var ssid = uuid.v4() + "-" + uuid.v4() + "-" + uuid.v4() + "-" + uuid.v4();
+
+    var session = {id: user, session : ssid, Expiration : dt};
+
+    callback(session, {type : "ssid", body : session.session});
 }
 
 // ### logout
@@ -86,4 +96,6 @@ exports.logout = function(session){
 
 exports.isSessionValid = function(session){
     
+    console.log(session)
+    return {valid : true, message : "Session valid", session : session}
 }

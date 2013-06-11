@@ -1,9 +1,3 @@
-// http://edg3.co.uk/snippets/weather-location-codes/spain/
-// http://query.yahooapis.com/v1/public/yql?q=select%20item%20from%20weather.forecast%20where%20location%3D%22SPXX0082%22&format=json
-// http://query.yahooapis.com/v1/public/yql?q=SELECT%20*%20FROM%20weather.bylocation%20WHERE%20location%3D'Valencia'%20AND%20unit%3D%22c%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys
-
-// http://developer.yahoo.com/yql/console/?q=SELECT%20*%20FROM%20weather.bylocation%20WHERE%20location%3D'Nice'%20AND%20unit%3D%22c%22&env=store://datatables.org/alltableswithkeys#h=SELECT%20*%20FROM%20weather.bylocation%20WHERE%20location%3D%27Valencia%27%20AND%20unit%3D%22c%22
-
 
 var restify = require('restify');
 
@@ -17,6 +11,12 @@ var m_db;
 var objs = function(){};
 
 var timer; 
+
+var langWindDir = new Array(
+   "N", "NNE", "NE", "ENE", 
+   "E", "ESE", "SE", "SSE", 
+   "S", "SSW", "SW", "WSW", 
+   "W", "WNW", "NW", "NNW");
 
 
 // ### run
@@ -52,7 +52,19 @@ function pool(){
             return;
         }
 
-        console.log(obj.query.results.weather.rss.channel);
+        var channels = obj.query.results.weather.rss.channel;
+        
+        for (var key in channels){
+            var value = channels[key];
+            
+            try{
+
+                objs[key].create(value);
+            }
+            catch(err){
+
+            }
+        }
 
         client.close();
         setTimeout(pool, m_poolInterval);
@@ -76,3 +88,102 @@ exports.write = function(deviceType, device, actuator, value){
     }
     
 }
+
+/* ** TYPE DEFINITION ******************************************************************************************* */
+
+// ### atmosphere
+
+objs.atmosphere = function () {};
+
+    objs.atmosphere.create = function(atmosphere){
+
+        for (var key in atmosphere){
+
+            var value = atmosphere[key];
+            
+            var obj = {
+
+                pooler : m_poolName,
+                type : key,
+                deviceId : "0",
+                values : [{value : value}],
+                actuators : []
+            }
+
+            m_db.save(m_poolName + "-" + key, obj);
+        }
+    }
+
+// ### astronomy
+
+objs.astronomy = function () {};
+
+    objs.astronomy.create = function(astronomy){
+
+        for (var key in astronomy){
+
+            var value = astronomy[key];
+            
+            var obj = {
+
+                pooler : m_poolName,
+                type : key,
+                deviceId : "0",
+                values : [{value : value}],
+                actuators : []
+            }
+
+            m_db.save(m_poolName + "-" + key, obj);
+        }
+    }
+
+// ### wind
+
+objs.wind = function () {};
+
+    objs.wind.create = function(wind){
+
+        for (var key in wind){
+
+            var value = wind[key];
+
+            if (key === "direction"){
+                value = langWindDir[Math.floor(((parseInt(value) + 11) / 22.5) % 16 )];
+                key = "wind_dir";
+            }
+            else if (key === "speed"){
+                key = "wind_speed"
+            }
+            
+            var obj = {
+
+                pooler : m_poolName,
+                type : key,
+                deviceId : "0",
+                values : [{value : value}],
+                actuators : []
+            }
+
+            m_db.save(m_poolName + "-" + key, obj);
+        }
+    }
+
+// ### item
+
+objs.item = function () {};
+
+    objs.item.create = function(item){
+
+        var temp = item.condition.temp;
+
+        var obj = {
+
+            pooler : m_poolName,
+            type : "temperature",
+            deviceId : "0",
+            values : [{value : temp}],
+            actuators : []
+        }
+
+        m_db.save(m_poolName + "-" + "temperature", obj);
+    }

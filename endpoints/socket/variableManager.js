@@ -10,7 +10,7 @@ exports.request = function(socket, param){
 
     log.write("variableManager", "Variable request received : " + param[0] + " - " + param[1]);
 
-    socket.send({type : "setVariable", body : {variable : param[0], option:  "", value : m_db.get(param[0]) }});
+    //socket.send({type : "setVariable", body : {variable : param[0], option:  "", value : db.get(param[0]) }});
 }
 
 // ### release

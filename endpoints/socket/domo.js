@@ -18,14 +18,14 @@ exports.getAllModules = function(socket, params){
 
 exports.getPlaces = function(socket, params){
     
-    socket.send({type : "setVariable", body : {variable : "places", option:  "", value : {places : config.load('../../config/modules.json')}}});
+    socket.send({type : "setVariable", body : {variable : "places", option:  "", value : {places : config.load( '/application/config/places.json')}}});
 }
 
 // ### getModulesAssociations
 // Params : socket, params
 // Get all module/places associations
 
-exports.getModulesAssociation = function(params){
+exports.getModulesAssociation = function(socket, params){
     
-    socket.send({type : "setVariable", body : {variable : "modulesAssociation", option:  "", value : {modulesAssociation : config.load('../../config/modulesAssociation.json')}}});
+    socket.send({type : "setVariable", body : {variable : "modulesAssociation", option:  "", value : {modulesAssociation : config.load('/application/config/modulesAssociation.json')}}});
 }

@@ -3,7 +3,7 @@
         "processor":"zway",
         "name" : "mainZwaveControler",
         "poolInterval" : 1000,
-        "params": { "ip" : "172.16.1.15", "port" : "8083", "path" : "/" },
+        "params": { "ip" : "localhost", "port" : "80", "path" : "/" },
         "active" : true
     },
     {   

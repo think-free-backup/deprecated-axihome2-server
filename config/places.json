@@ -1,4 +1,5 @@
 [
-    {"name" : "Outdoor"},
-    {"name" : "Salon"}
+    {"name" : "Home"},
+    {"name" : "Salon"},
+    {"name" : "Chambre"}
 ]

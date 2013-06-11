@@ -1,4 +1,21 @@
 [
-    {"module" : "mainZwaveControler-BinaryPowerSwitch-2", "place" : "Salon"},
-    {"module" : "mainZwaveControler-RoutingMultilevelSwitch-3", "place" : "Salon"}
+    {"module" : "mainWeather-visibility-0", "name" : "Visibility", "place" : "Home"},
+    {"module" : "mainWeather-sunrise-0", "name" : "Sunrise", "place" : "Home"},
+    {"module" : "mainWeather-sunset-0", "name" : "Sunset", "place" : "Home"},
+    {"module" : "homeWeatherStation-pressure-0", "name" : "Pressure", "place" : "Home"},
+    {"module" : "homeWeatherStation-rain_day-0", "name" : "Rain", "place" : "Home"},
+    {"module" : "homeWeatherStation-wind_dir-0", "name" : "Wind dir", "place" : "Home"},
+    {"module" : "homeWeatherStation-wind_speed-0", "name" : "Wind speed", "place" : "Home"},
+    {"module" : "homeWeatherStation-temperature-0", "name" : "Temperature", "place" : "Home"},
+    {"module" : "homeWeatherStation-humidity-0", "name" : "humidity", "place" : "Home"},
+
+    {"module" : "mainZwaveControler-BinaryPowerSwitch-2", "name" : "Bibliotheque", "place" : "Salon"},
+    {"module" : "mainZwaveControler-RoutingMultilevelSwitch-3", "name" : "Halogene", "place" : "Salon"},
+    {"module" : "mainZwaveControler-RoutingMultilevelSwitch-5", "name" : "Entree", "place" : "Salon"},
+    {"module" : "mainZwaveControler-BinaryPowerSwitch-11", "name" : "Bureau", "place" : "Salon"},
+    {"module" : "homeWeatherStation-temperature-1", "name" : "Temperature", "place" : "Salon"},
+    {"module" : "homeWeatherStation-humidity-1", "name" : "Humidity", "place" : "Salon"},
+
+    {"module" : "homeWeatherStation-temperature-2", "name" : "Temperature", "place" : "Chambre"},
+    {"module" : "homeWeatherStation-humidity-2", "name" : "Humidity", "place" : "Chambre"}
 ]
