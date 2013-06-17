@@ -18,6 +18,6 @@
         "name" : "mainWeather",
         "poolInterval" : 1800000,
         "params": { "city" : "Valencia" },
-        "active" : false
+        "active" : true
     }
 ]
