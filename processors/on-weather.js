@@ -3,16 +3,7 @@ var restify = require('restify');
 
 // ### Local variable definition
 
-var m_poolName = "";
-var m_poolInterval = -1;
-var m_params = [];
-var m_db;
-
 var objs = function(){};
-
-var timer; 
-
-var olderTs = -1;
 
 
 // ### run
@@ -21,43 +12,42 @@ var olderTs = -1;
 
 exports.run = function(name, poolInterval, params, db){
     
-    m_poolName = name;
-    m_poolInterval = poolInterval;
-    m_params = params;
-    m_db = db;
+    var timer;
+    var olderTs = -1;
+    var parameters = {poolName : name, poolInterval : poolInterval, params : params, db : db, timer : timer, olderTs : olderTs};
 
-    pool();
+    pool(parameters);
 }
 
 // ### pool
 // Params : none
 // Pooling function
 
-function pool(){
+function pool(params){
 
     var client = restify.createJsonClient({
-        url: 'http://' + m_params.ip + ':' + m_params.port,
+        url: 'http://' + params.params.ip + ':' + params.params.port,
         version: '*'
     });
 
-    client.get( m_params.path + 'api/current/summary', function(err, req, res, obj) {
+    client.get( params.params.path + 'api/current/summary', function(err, req, res, obj) {
 
         if (err){
             console.log(err);
-            setTimeout(pool, m_poolInterval * 2);
+            setTimeout(pool, params.poolInterval * 2);
             return;
         }
 
-        if (obj.body.date != olderTs){
+        if (obj.body.date != params.olderTs){
 
-            olderTs = obj.body.date;
+            params.olderTs = obj.body.date;
 
             for (var key in obj.body){
                 var value = obj.body[key];
 
                 try{
 
-                    objs[key].create(value);
+                    objs[key].create(params, value);
                 }
                 catch(err){
 
@@ -66,7 +56,7 @@ function pool(){
         }
 
         client.close();
-        setTimeout(pool, m_poolInterval);
+        setTimeout(pool, params.poolInterval, params);
     });
 }
 
@@ -75,11 +65,11 @@ function pool(){
 // Params : json
 // Write to the backend the new value
 
-exports.write = function(deviceType, device, actuator, value){
+exports.write = function(params, deviceType, device, actuator, value){
 
     try{
 
-        objs[deviceType][actuator](device, value);    
+        objs[deviceType][actuator](params, device, value);    
     }
     catch (err){
         
@@ -93,18 +83,18 @@ exports.write = function(deviceType, device, actuator, value){
 
 objs.pressure = function () {};
 
-    objs.pressure.create = function(value){
+    objs.pressure.create = function(params, value){
 
         var obj = {
 
-            pooler : m_poolName,
+            pooler : params.poolName,
             type : "pressure",
             deviceId : "0",
             values : [{value : value}],
             actuators : []
         }
 
-        m_db.save(m_poolName + "-" + "pressure", obj);
+        params.db.save(params.poolName + "-" + "pressure", obj);
     }
 
 
@@ -112,75 +102,75 @@ objs.pressure = function () {};
 
 objs.rain_day_total = function () {};
 
-    objs.rain_day_total.create = function(value){
+    objs.rain_day_total.create = function(params, value){
 
         var obj = {
 
-            pooler : m_poolName,
+            pooler : params.poolName,
             type : "rain_day",
             deviceId : "0",
             values : [{value : value}],
             actuators : []
         }
 
-        m_db.save(m_poolName + "-" + "rain_day", obj);
+        params.db.save(params.poolName + "-" + "rain_day", obj);
     }
 
 // ### wind_dir
 
 objs.wind_dir = function () {};
 
-    objs.wind_dir.create = function(value){
+    objs.wind_dir.create = function(params, value){
 
         var obj = {
 
-            pooler : m_poolName,
+            pooler : params.poolName,
             type : "wind_dir",
             deviceId : "0",
             values : [{value : value}],
             actuators : []
         }
 
-        m_db.save(m_poolName + "-" + "wind_dir", obj);
+        params.db.save(params.poolName + "-" + "wind_dir", obj);
     }
 
 // ### wind_speed
 
 objs.wind_speed = function () {};
 
-    objs.wind_speed.create = function(value){
+    objs.wind_speed.create = function(params, value){
 
         var obj = {
 
-            pooler : m_poolName,
+            pooler : params.poolName,
             type : "wind_speed",
             deviceId : "0",
             values : [{value : value}],
             actuators : []
         }
 
-        m_db.save(m_poolName + "-" + "wind_speed", obj);
+        params.db.save(params.poolName + "-" + "wind_speed", obj);
     }
 
 // ### temperature
 
 objs.temperature = function () {};
 
-    objs.temperature.create = function(value){
+    objs.temperature.create = function(params, value){
 
         for (var id in value){
             var mesure = value[id];
             
             var obj = {
 
-                pooler : m_poolName,
+                pooler : params.poolName,
                 type : "temperature",
                 deviceId : mesure.sensor,
                 values : [{value : mesure.value}],
                 actuators : []
             }
 
-            m_db.save(m_poolName + "-" + "temperature-" + mesure.sensor, obj);
+            params.db.save(params.poolName + "-" + "temperature-" + mesure.sensor, obj);
         }
     }
 
@@ -188,20 +178,20 @@ objs.temperature = function () {};
 
 objs.humidity = function () {};
 
-    objs.humidity.create = function(value){
+    objs.humidity.create = function(params, value){
 
         for (var id in value){
             var mesure = value[id];
             
             var obj = {
 
-                pooler : m_poolName,
+                pooler : params.poolName,
                 type : "humidity",
                 deviceId : mesure.sensor,
                 values : [{value : mesure.value}],
                 actuators : []
             }
 
-            m_db.save(m_poolName + "-" + "humidity-" + mesure.sensor, obj);
+            params.db.save(params.poolName + "-" + "humidity-" + mesure.sensor, obj);
         }
     }

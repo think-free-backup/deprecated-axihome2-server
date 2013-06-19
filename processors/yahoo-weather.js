@@ -3,14 +3,7 @@ var restify = require('restify');
 
 // ### Local variable definition
 
-var m_poolName = "";
-var m_poolInterval = -1;
-var m_params = [];
-var m_db;
-
 var objs = function(){};
-
-var timer; 
 
 var langWindDir = new Array(
    "N", "NNE", "NE", "ENE", 
@@ -25,30 +18,30 @@ var langWindDir = new Array(
 
 exports.run = function(name, poolInterval, params, db){
     
-    m_poolName = name;
-    m_poolInterval = poolInterval;
-    m_params = params;
-    m_db = db;
+    var timer;
+    var parameters = {poolName : name, poolInterval : poolInterval, params : params, db : db, timer : timer};
 
-    pool();
+    pool(parameters);
 }
 
 // ### pool
 // Params : none
 // Pooling function
 
-function pool(){
+function pool(params){
+
+    console.log (params.poolInterval)
 
     var client = restify.createJsonClient({
         url: 'http://query.yahooapis.com',
         version: '*'
     });
 
-    client.get("/v1/public/yql?q=SELECT%20*%20FROM%20weather.bylocation%20WHERE%20location%3D'"+ m_params.city +"'%20AND%20unit%3D%22c%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys", function(err, req, res, obj) {
+    client.get("/v1/public/yql?q=SELECT%20*%20FROM%20weather.bylocation%20WHERE%20location%3D'"+ params.params.city +"'%20AND%20unit%3D%22c%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys", function(err, req, res, obj) {
 
         if (err){
             console.log(err);
-            setTimeout(pool, m_poolInterval * 2);
+            setTimeout(pool, params.poolInterval * 2);
             return;
         }
 
@@ -59,7 +52,7 @@ function pool(){
             
             try{
 
-                objs[key].create(value);
+                objs[key].create(params, value);
             }
             catch(err){
 
@@ -67,7 +60,8 @@ function pool(){
         }
 
         client.close();
-        setTimeout(pool, m_poolInterval);
+
+        setTimeout(pool, params.poolInterval, params);
     });
 }
 
@@ -76,17 +70,16 @@ function pool(){
 // Params : json
 // Write to the backend the new value
 
-exports.write = function(deviceType, device, actuator, value){
+exports.write = function(params, deviceType, device, actuator, value){
 
     try{
 
-        objs[deviceType][actuator](device, value);    
+        objs[deviceType][actuator](params, device, value);    
     }
     catch (err){
         
         console.log("Error calling write for device '" + deviceType + "' actuator '" + actuator + "'");
     }
-    
 }
 
 /* ** TYPE DEFINITION ******************************************************************************************* */
@@ -95,7 +88,7 @@ exports.write = function(deviceType, device, actuator, value){
 
 objs.atmosphere = function () {};
 
-    objs.atmosphere.create = function(atmosphere){
+    objs.atmosphere.create = function(params, atmosphere){
 
         for (var key in atmosphere){
 
@@ -103,14 +96,15 @@ objs.atmosphere = function () {};
             
             var obj = {
 
-                pooler : m_poolName,
+                processor : "yahoo-weather",
+                pooler : params.poolName,
                 type : key,
                 deviceId : "0",
                 values : [{value : value}],
                 actuators : []
             }
 
-            m_db.save(m_poolName + "-" + key, obj);
+            params.db.save(params.poolName + "-" + key, obj);
         }
     }
 
@@ -118,7 +112,7 @@ objs.atmosphere = function () {};
 
 objs.astronomy = function () {};
 
-    objs.astronomy.create = function(astronomy){
+    objs.astronomy.create = function(params, astronomy){
 
         for (var key in astronomy){
 
@@ -126,14 +120,15 @@ objs.astronomy = function () {};
             
             var obj = {
 
-                pooler : m_poolName,
+                processor : "yahoo-weather",
+                pooler : params.poolName,
                 type : key,
                 deviceId : "0",
                 values : [{value : value}],
                 actuators : []
             }
 
-            m_db.save(m_poolName + "-" + key, obj);
+            params.db.save(params.poolName + "-" + key, obj);
         }
     }
 
@@ -141,7 +136,7 @@ objs.astronomy = function () {};
 
 objs.wind = function () {};
 
-    objs.wind.create = function(wind){
+    objs.wind.create = function(params, wind){
 
         for (var key in wind){
 
@@ -157,14 +152,15 @@ objs.wind = function () {};
             
             var obj = {
 
-                pooler : m_poolName,
+                processor : "yahoo-weather",
+                pooler : params.poolName,
                 type : key,
                 deviceId : "0",
                 values : [{value : value}],
                 actuators : []
             }
 
-            m_db.save(m_poolName + "-" + key, obj);
+            params.db.save(params.poolName + "-" + key, obj);
         }
     }
 
@@ -172,18 +168,19 @@ objs.wind = function () {};
 
 objs.item = function () {};
 
-    objs.item.create = function(item){
+    objs.item.create = function(params, item){
 
         var temp = item.condition.temp;
 
         var obj = {
 
-            pooler : m_poolName,
+            processor : "yahoo-weather",    
+            pooler : params.poolName,
             type : "temperature",
             deviceId : "0",
             values : [{value : temp}],
             actuators : []
         }
 
-        m_db.save(m_poolName + "-" + "temperature", obj);
+        params.db.save(params.poolName + "-" + "temperature", obj);
     }

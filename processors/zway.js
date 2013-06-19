@@ -1,17 +1,9 @@
 
 var restify = require('restify');
 
-// ### Local variable definition
-
-var m_poolName = "";
-var m_poolInterval = -1;
-var m_params = [];
-var m_db;
+// ### Object variable definition
 
 var objs = function(){};
-
-var timer; 
-
 
 // ### run
 // Params : name, poolInterval, params, db
@@ -19,31 +11,29 @@ var timer;
 
 exports.run = function(name, poolInterval, params, db){
     
-    m_poolName = name;
-    m_poolInterval = poolInterval;
-    m_params = params;
-    m_db = db;
+    var timer;
+    var parameters = {poolName : name, poolInterval : poolInterval, params : params, db : db, timer : timer};
 
-    pool();
+    pool(parameters);
 }
 
 // ### pool
 // Params : none
 // Pooling function
 
-function pool(){
+function pool(params){
 
     var client = restify.createJsonClient({
-        url: 'http://' + m_params.ip + ':' + m_params.port,
+        url: 'http://' + params.params.ip + ':' + params.params.port,
         version: '*',
         retry: {'retries': 0}
     });
 
-    client.get(m_params.path + 'ZWaveAPI/Data/0', function(err, req, res, obj) {
+    client.get(params.params.path + 'ZWaveAPI/Data/0', function(err, req, res, obj) {
 
         if (err){
             console.log(err);
-            setTimeout(pool, m_poolInterval * 2);
+            setTimeout(pool, params.poolInterval * 2);
             return;
         }
 
@@ -54,9 +44,9 @@ function pool(){
 
             try{
 
-                var dev = objs[type].create(idx,value.instances);
+                var dev = objs[type].create(params, idx, value.instances);
 
-                m_db.save(m_poolName + "-" + type + "-" + dev.deviceId, dev);
+                params.db.save(params.poolName + "-" + type + "-" + dev.deviceId, dev);
             }
             catch(err){
 
@@ -64,7 +54,7 @@ function pool(){
             }
         }
         client.close();
-        setTimeout(pool, m_poolInterval);
+        setTimeout(pool, params.poolInterval, params);
     });
 }
 
@@ -73,11 +63,11 @@ function pool(){
 // Params : json
 // Write to the backend the new value
 
-exports.write = function(deviceType, device, actuator, value){
+exports.write = function(params, deviceType, device, actuator, value){
 
     try{
 
-        objs[deviceType][actuator](device, value);    
+        objs[deviceType][actuator](params, device, value);    
     }
     catch (err){
         
@@ -92,13 +82,14 @@ exports.write = function(deviceType, device, actuator, value){
 
 objs.BinaryPowerSwitch = function () {};
 
-    objs.BinaryPowerSwitch.create = function(device, instances){
+    objs.BinaryPowerSwitch.create = function(params, device, instances){
 
         var stateValue = instances[0].commandClasses[37].data.level.value;
 
         var obj = {
 
-            pooler : m_poolName,
+            processor : "zway",
+            pooler : params.poolName,
             type : "BinaryPowerSwitch",
             deviceId : device,
             values : [{state : stateValue}],
@@ -108,10 +99,10 @@ objs.BinaryPowerSwitch = function () {};
         return obj;
     }
 
-    objs.BinaryPowerSwitch.setState = function(device, value){
+    objs.BinaryPowerSwitch.setState = function(params, device, value){
 
         var client = restify.createJsonClient({
-            url: 'http://' + m_params.ip + ':' + m_params.port,
+            url: 'http://' + params.ip + ':' + params.port,
             version: '*'
         });
 
@@ -128,13 +119,14 @@ objs.BinaryPowerSwitch = function () {};
 
 objs.RoutingMultilevelSwitch = function(){};
 
-    objs.RoutingMultilevelSwitch.create = function(device, instances){
+    objs.RoutingMultilevelSwitch.create = function(params, device, instances){
 
         var levelValue = instances[0].commandClasses[38].data.level.value;
 
         var obj = {
 
-            pooler : m_poolName,
+            processor : "zway",
+            pooler : params.poolName,
             type : "RoutingMultilevelSwitch",
             deviceId : device,
             values : [{level : levelValue}],
@@ -144,10 +136,10 @@ objs.RoutingMultilevelSwitch = function(){};
         return obj;
     }
 
-    objs.RoutingMultilevelSwitch.setLevel = function(device, value){
+    objs.RoutingMultilevelSwitch.setLevel = function(params, device, value){
 
         var client = restify.createJsonClient({
-            url: 'http://' + m_params.ip + ':' + m_params.port,
+            url: 'http://' + params.ip + ':' + params.params.port,
             version: '*'
         });
 
