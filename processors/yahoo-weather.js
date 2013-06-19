@@ -30,8 +30,6 @@ exports.run = function(name, poolInterval, params, db){
 
 function pool(params){
 
-    console.log (params.poolInterval)
-
     var client = restify.createJsonClient({
         url: 'http://query.yahooapis.com',
         version: '*'

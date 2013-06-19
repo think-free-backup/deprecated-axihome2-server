@@ -65,6 +65,8 @@ function pool(params){
 
 exports.write = function(params, deviceType, device, actuator, value){
 
+    console.log("===================================================")
+
     try{
 
         objs[deviceType][actuator](params, device, value);    
@@ -72,6 +74,7 @@ exports.write = function(params, deviceType, device, actuator, value){
     catch (err){
         
         console.log("Error calling write for device '" + deviceType + "' actuator '" + actuator + "'");
+        console.log(err)
     }
     
 }

@@ -40,20 +40,22 @@ exports.callModule = function(socket, params){
     try{
 
         var poolerParams = getParamsForModule(params[0], params[1]);
-        var processor = require("/application/processors/" + params[0] + ".js");
-        processor.write(poolerParams, params[2], params[3], params[4], params[5])
+        var proc = require("../../processors/" + params[0] + ".js");
+        proc.write(poolerParams, params[2], params[3], params[4], params[5])
     }
     catch(err){
 
+        console.log(err)
     }
 }
 
 function getParamsForModule(processor, pooler){
 
     for (var idx in modules){
+        console.log(modules[idx])
         var value = modules[idx];
         
-        if (value.pooler === pooler && value.processor === processor){
+        if (value.name === pooler && value.processor === processor){
 
             return value.params;
         }
