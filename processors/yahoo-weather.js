@@ -41,7 +41,7 @@ function pool(params){
 
         if (err){
             console.log(err);
-            setTimeout(pool, params.poolInterval * 2);
+            setTimeout(pool, params.poolInterval * 2, params);
             return;
         }
 
