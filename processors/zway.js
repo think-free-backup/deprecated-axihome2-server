@@ -142,7 +142,7 @@ objs.RoutingMultilevelSwitch = function(){};
     objs.RoutingMultilevelSwitch.setLevel = function(params, device, value){
 
         var client = restify.createJsonClient({
-            url: 'http://' + params.ip + ':' + params.params.port,
+            url: 'http://' + params.ip + ':' + params.port,
             version: '*'
         });
 
