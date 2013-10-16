@@ -2,7 +2,7 @@
 
 
 var soc = require("unified.socket/unified.socket.js");
-var db = require('../../lib/lib-memory-database.js');
+var db = require('../../lib/lib-database.js');
 var config = require('../../../lib/lib-config');
 var modules = config.load( '/config/modules.json')
 

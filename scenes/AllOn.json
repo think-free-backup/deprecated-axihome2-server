@@ -2,7 +2,8 @@
 
 	"name" : "All On",
 	"desc" : "Turn every light on",
-	"actions" : [
-					{}
-				]	
+	"actions" : 
+		[
+			{ "name" : "mainZwaveControler", "processor" : "zway", "deviceType" : "BinaryPowerSwitch", "device" : "2", "actuator" : "setState", "value" : "255"}
+		]	
 }

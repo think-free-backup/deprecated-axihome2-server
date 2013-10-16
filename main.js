@@ -1,7 +1,7 @@
 
 var log = require('../lib/lib-log');
 var soc = require("unified.socket/unified.socket.js");
-var db = require('./lib/lib-memory-database.js');
+var db = require('./lib/lib-database.js');
 var uuid = require('node-uuid');
 
 // ## Init and socket connection callback

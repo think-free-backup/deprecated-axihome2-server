@@ -1,7 +1,7 @@
 /* Variables binding with remote application */
 
 var log = require("../../../lib/lib-log");
-var db = require('../../lib/lib-memory-database.js');
+var db = require('../../lib/lib-database.js');
 
 // ### request
 // Params : name, filter
