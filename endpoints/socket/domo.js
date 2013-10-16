@@ -1,3 +1,5 @@
+/* Every functions for domo should come here (appart of variable binding and configuration) */
+
 
 var soc = require("unified.socket/unified.socket.js");
 var db = require('../../lib/lib-memory-database.js');
@@ -49,13 +51,13 @@ exports.callModule = function(socket, params){
     }
 }
 
-function getParamsForModule(processor, pooler){
+function getParamsForModule(processor, name){
 
     for (var idx in modules){
         console.log(modules[idx])
         var value = modules[idx];
         
-        if (value.name === pooler && value.processor === processor){
+        if (value.name === name && value.processor === processor){
 
             return value.params;
         }

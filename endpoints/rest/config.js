@@ -1,3 +1,4 @@
+/* This endpoint is used for application configuration */
 
 var db = require('../../lib/lib-memory-database.js');
 
