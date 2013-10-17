@@ -3,6 +3,7 @@
 
 var soc = require("unified.socket/unified.socket.js");
 var db = require('../../lib/lib-database.js');
+var tools = require('../../lib/lib-tools.js');
 var config = require('../../../lib/lib-config');
 var modules = config.load( '/config/modules.json')
 
@@ -39,29 +40,6 @@ exports.getModulesAssociation = function(socket, params){
 
 exports.callModule = function(socket, params){
 
-    try{
 
-        var poolerParams = getParamsForModule(params[0], params[1]);
-        var proc = require("../../processors/" + params[0] + ".js");
-        proc.write(poolerParams, params[2], params[3], params[4], params[5])
-    }
-    catch(err){
-
-        console.log(err)
-    }
-}
-
-function getParamsForModule(processor, name){
-
-    for (var idx in modules){
-        console.log(modules[idx])
-        var value = modules[idx];
-        
-        if (value.name === name && value.processor === processor){
-
-            return value.params;
-        }
-    }
-
-    return undefined;
+    tools.callModule(params[1], params[0], params[2], params[3], params[4], params[5])
 }
