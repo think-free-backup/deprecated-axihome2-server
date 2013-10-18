@@ -96,6 +96,5 @@ exports.logout = function(session){
 
 exports.isSessionValid = function(session){
     
-    console.log(session)
     return {valid : true, message : "Session valid", session : session}
 }
