@@ -10,8 +10,8 @@
     {"module" : "homeWeatherStation-humidity-1", "name" : "Humidity", "place" : "Home"},
 
     {"module" : "mainZwaveControler-BinaryPowerSwitch-2", "name" : "Bibliotheque", "place" : "Salon"},
-    {"module" : "mainZwaveControler-RoutingMultilevelSwitch-5", "name" : "Halogene", "place" : "Salon"},
-    {"module" : "mainZwaveControler-BinaryPowerSwitch-11", "name" : "Bureau", "place" : "Salon"},
+    {"module" : "mainZwaveControler-RoutingMultilevelSwitch-3", "name" : "Halogene", "place" : "Salon"},
+    {"module" : "mainZwaveControler-BinaryPowerSwitch-4", "name" : "Bureau", "place" : "Salon"},
     {"module" : "homeWeatherStation-temperature-0", "name" : "Temperature", "place" : "Salon"},
     {"module" : "homeWeatherStation-humidity-0", "name" : "Humidity", "place" : "Salon"},
 
