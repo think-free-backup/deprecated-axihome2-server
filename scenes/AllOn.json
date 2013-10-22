@@ -1,10 +1,16 @@
 {
 	"actions" : 
 		[
-			{ "name" : "mainZwaveControler", "processor" : "zway", "deviceType" : "BinaryPowerSwitch", "device" : "5", "actuator" : "setState", "value" : "0", "delay" : 0 },
 			{ "name" : "mainZwaveControler", "processor" : "zway", "deviceType" : "BinaryPowerSwitch", "device" : "2", "actuator" : "setState", "value" : "0", "delay" : 0 },
+			{ "name" : "mainZwaveControler", "processor" : "zway", "deviceType" : "BinaryPowerSwitch", "device" : "2", "actuator" : "setState", "value" : "255", "delay" : 1000 },
+			{ "name" : "mainZwaveControler", "processor" : "zway", "deviceType" : "BinaryPowerSwitch", "device" : "2", "actuator" : "setState", "value" : "0", "delay" : 2000 },
 			{ "name" : "mainZwaveControler", "processor" : "zway", "deviceType" : "BinaryPowerSwitch", "device" : "2", "actuator" : "setState", "value" : "255", "delay" : 3000 },
-			{ "name" : "mainZwaveControler", "processor" : "zway", "deviceType" : "BinaryPowerSwitch", "device" : "2", "actuator" : "setState", "value" : "0", "delay" : 6000 },
-			{ "name" : "mainZwaveControler", "processor" : "zway", "deviceType" : "BinaryPowerSwitch", "device" : "2", "actuator" : "setState", "value" : "255", "delay" : 9000 }
+			{ "name" : "mainZwaveControler", "processor" : "zway", "deviceType" : "BinaryPowerSwitch", "device" : "2", "actuator" : "setState", "value" : "0", "delay" : 4000 },
+
+			{ "name" : "mainZwaveControler", "processor" : "zway", "deviceType" : "BinaryPowerSwitch", "device" : "5", "actuator" : "setState", "value" : "0", "delay" : 2000 },
+			{ "name" : "mainZwaveControler", "processor" : "zway", "deviceType" : "BinaryPowerSwitch", "device" : "5", "actuator" : "setState", "value" : "255", "delay" : 3000 },
+			{ "name" : "mainZwaveControler", "processor" : "zway", "deviceType" : "BinaryPowerSwitch", "device" : "5", "actuator" : "setState", "value" : "0", "delay" : 4000 },
+			{ "name" : "mainZwaveControler", "processor" : "zway", "deviceType" : "BinaryPowerSwitch", "device" : "5", "actuator" : "setState", "value" : "255", "delay" : 5000 },
+			{ "name" : "mainZwaveControler", "processor" : "zway", "deviceType" : "BinaryPowerSwitch", "device" : "5", "actuator" : "setState", "value" : "0", "delay" : 6000 }
 		]	
 }

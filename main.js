@@ -34,7 +34,7 @@ exports.init = function(config){
 
     db.setSaveCallback(function(key, value){
 
-        //console.log(message);
+        // TODO : Calculate triggers here
 
         soc.broadcast({type : "setVariable", body : {variable : key, option:  "", value : value}});
     });
