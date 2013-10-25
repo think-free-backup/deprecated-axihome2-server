@@ -9,6 +9,7 @@
     {"module" : "homeWeatherStation-temperature-1", "name" : "Temperature", "place" : "Home"},
     {"module" : "homeWeatherStation-humidity-1", "name" : "Humidity", "place" : "Home"},
 
+    {"module" : "mpdSalon-Mpdcontroler-0", "name" : "Music", "place" : "Salon"},
     {"module" : "mainZwaveControler-BinaryPowerSwitch-2", "name" : "Bibliotheque", "place" : "Salon"},
     {"module" : "mainZwaveControler-RoutingMultilevelSwitch-3", "name" : "Halogene", "place" : "Salon"},
     {"module" : "mainZwaveControler-BinaryPowerSwitch-4", "name" : "Bureau", "place" : "Salon"},
