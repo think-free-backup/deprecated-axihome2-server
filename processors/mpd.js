@@ -11,6 +11,9 @@ var statusChecker;
 var m_db;
 var m_name;
 
+var state = {};
+var song = {};
+
 // ### run
 // Params : name, poolInterval, params, db
 // Start backend
@@ -67,7 +70,7 @@ exports.write = function(params, deviceType, device, actuator, value){
 /* Write to database                                      */
 /* ****************************************************** */
 
-function saveState(value){
+function saveState(state, song){
 
 	var state = {
 
@@ -75,26 +78,11 @@ function saveState(value){
 	    pooler : m_name,
 	    type : "state",
 	    deviceId : "0",
-	    values : [value],
-	    actuators : ["play", "stop", "volume"]
+	    values : [state, song],
+	    actuators : ["play", "stop", "previous", "next", "volume"]
 	}
 
 	m_db.save(m_name + "-" + "state", state);
-}
-
-function saveSong(value){
-
-	var song = {
-
-	    processor : "mpd",
-	    pooler : m_name,
-	    type : "song",
-	    deviceId : "0",
-	    values : [value],
-	    actuators : ["previous", "next"]
-	}
-
-	m_db.save(m_name + "-" + "song", song);
 }
 
 
@@ -119,14 +107,18 @@ function connect(host, port){
 
 			getStatus(function(message){
 
+				state = message;
+
 				//console.log(message);
-				saveState(message);
+				saveState(state, song);
 			});
 
 		    getCurrentSong(function(message){
 
+		    	song = message;
+
 		    	//console.log(message);
-		    	saveSong(message);
+		    	saveSong(state, song);
 		    });
 
 		/* We are connected, we don't need to try to reconnect */
@@ -156,7 +148,8 @@ function connect(host, port){
 		getStatus(function(message){
 
 			//console.log(message);
-			saveState(message);
+			state = message;
+			saveSong(state, song);
 		});
 	});
 
@@ -173,13 +166,15 @@ function connect(host, port){
 		getStatus(function(message){
 
 			//console.log(message);
-			saveState(message);
+			state = message;
+			saveSong(state, song);
 		});
 
 	    getCurrentSong(function(message){
 
 	    	//console.log(message);
-	    	saveSong(message);
+	    	song = message;
+	    	saveSong(state, song);
 	    });
 	});
 
