@@ -118,7 +118,7 @@ function connect(host, port){
 		    	song = message;
 
 		    	//console.log(message);
-		    	saveSong(state, song);
+		    	saveState(state, song);
 		    });
 
 		/* We are connected, we don't need to try to reconnect */
