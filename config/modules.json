@@ -19,5 +19,13 @@
         "poolInterval" : 1800000,
         "params": { "city" : "Valencia" },
         "active" : true
+    },
+    {   
+        "processor":"mpd",
+        "name" : "mpdSalon",
+        "poolInterval" : -1,
+        "params": { "host" : "172.16.1.16", "port" : 6600 },
+        "active" : true
     }
+
 ]

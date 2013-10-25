@@ -24,7 +24,7 @@ exports.getAllModules = function(socket, params){
 
 exports.getPlaces = function(socket, params){
     
-    socket.send({type : "setVariable", body : {variable : "places", option:  "", value : {places : config.load( '/config/places.json')}}});
+    socket.send({type : "setVariable", body : {variable : "places", option:  "", value : {places : tools.getPlaces() }}});
 }
 
 // ### getModulesAssociations
