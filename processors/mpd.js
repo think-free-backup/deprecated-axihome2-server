@@ -28,40 +28,32 @@ exports.run = function(name, poolInterval, params, db){
 
 exports.write = function(params, deviceType, device, actuator, value){
 
-	if (deviceType === "state"){
+	switch(actuator){
 
-		switch(actuator){
+		case "play":
 
-			case "play":
+			play();
+			break;
 
-				play();
-				break;
+		case "stop":
+		
+			stop();
+			break;
 
-			case "stop":
-			
-				stop();
-				break;
+		case "volume":
+		
+			volume(value);
+			break;
 
-			case "volume":
-			
-				volume(value);
-				break;
-		}
-	}
-	else if (deviceType === "song"){
+		case "previous":
 
-		switch(actuator){
+			previous();
+			break;
 
-			case "previous":
-
-				previous();
-				break;
-
-			case "next":
-			
-				next();
-				break;
-		}
+		case "next":
+		
+			next();
+			break;
 	}
 }
 
