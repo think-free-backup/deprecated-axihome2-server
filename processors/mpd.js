@@ -82,7 +82,7 @@ function saveState(state, song){
 	    actuators : ["play", "stop", "previous", "next", "volume"]
 	}
 
-	m_db.save(m_name + "-" + "Mpdcontroler", state);
+	m_db.save(m_name + "-" + "Mpdcontroler-0", state);
 }
 
 
