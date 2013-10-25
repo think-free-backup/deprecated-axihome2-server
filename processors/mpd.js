@@ -149,7 +149,7 @@ function connect(host, port){
 
 			//console.log(message);
 			state = message;
-			saveSong(state, song);
+			saveState(state, song);
 		});
 	});
 
@@ -167,14 +167,14 @@ function connect(host, port){
 
 			//console.log(message);
 			state = message;
-			saveSong(state, song);
+			saveState(state, song);
 		});
 
 	    getCurrentSong(function(message){
 
 	    	//console.log(message);
 	    	song = message;
-	    	saveSong(state, song);
+	    	saveState(state, song);
 	    });
 	});
 
