@@ -76,13 +76,13 @@ function saveState(state, song){
 
 	    processor : "mpd",
 	    pooler : m_name,
-	    type : "mpdcontroler",
+	    type : "Mpdcontroler",
 	    deviceId : "0",
 	    values : [state, song],
 	    actuators : ["play", "stop", "previous", "next", "volume"]
 	}
 
-	m_db.save(m_name + "-" + "mpdcontroler", state);
+	m_db.save(m_name + "-" + "Mpdcontroler", state);
 }
 
 
