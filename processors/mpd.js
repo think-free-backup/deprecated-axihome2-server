@@ -76,7 +76,7 @@ function saveState(state, song){
 
 	    processor : "mpd",
 	    pooler : m_name,
-	    type : "state",
+	    type : "mpdcontroler",
 	    deviceId : "0",
 	    values : [state, song],
 	    actuators : ["play", "stop", "previous", "next", "volume"]
