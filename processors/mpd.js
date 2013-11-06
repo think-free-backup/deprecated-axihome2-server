@@ -179,7 +179,7 @@ function connect(host, port){
 			clearInterval(statusChecker);
 		}
 
-		setTimeout(function(){connect();}, 5000);
+		setTimeout(function(){connect(host, port);}, 5000);
 	});
 }
 
