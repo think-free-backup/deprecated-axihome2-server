@@ -100,7 +100,7 @@ objs.atmosphere = function () {};
                 deviceId : "0",
                 values : [{value : value}],
                 actuators : [],
-                type : "weather"
+                group : "weather"
             }
 
             params.db.save(params.poolName + "-" + key, obj);
@@ -125,7 +125,7 @@ objs.astronomy = function () {};
                 deviceId : "0",
                 values : [{value : value}],
                 actuators : [],
-                type : "weather"
+                group : "weather"
             }
 
             params.db.save(params.poolName + "-" + key, obj);
@@ -158,7 +158,7 @@ objs.wind = function () {};
                 deviceId : "0",
                 values : [{value : value}],
                 actuators : [],
-                type : "weather"
+                group : "weather"
             }
 
             params.db.save(params.poolName + "-" + key, obj);
@@ -181,7 +181,7 @@ objs.item = function () {};
             deviceId : "0",
             values : [{value : temp}],
             actuators : [],
-            type : "weather"
+            group : "weather"
         }
 
         params.db.save(params.poolName + "-" + "temperature", obj);
