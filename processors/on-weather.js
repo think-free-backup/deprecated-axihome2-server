@@ -91,7 +91,8 @@ objs.pressure = function () {};
             type : "pressure",
             deviceId : "0",
             values : [{value : value}],
-            actuators : []
+            actuators : [],
+            type : "weather"
         }
 
         params.db.save(params.poolName + "-" + "pressure", obj);
@@ -110,7 +111,8 @@ objs.rain_day_total = function () {};
             type : "rain_day",
             deviceId : "0",
             values : [{value : value}],
-            actuators : []
+            actuators : [],
+            type : "weather"
         }
 
         params.db.save(params.poolName + "-" + "rain_day", obj);
@@ -128,7 +130,8 @@ objs.wind_dir = function () {};
             type : "wind_dir",
             deviceId : "0",
             values : [{value : value}],
-            actuators : []
+            actuators : [],
+            type : "weather"
         }
 
         params.db.save(params.poolName + "-" + "wind_dir", obj);
@@ -146,7 +149,8 @@ objs.wind_speed = function () {};
             type : "wind_speed",
             deviceId : "0",
             values : [{value : value}],
-            actuators : []
+            actuators : [],
+            type : "weather"
         }
 
         params.db.save(params.poolName + "-" + "wind_speed", obj);
@@ -167,7 +171,8 @@ objs.temperature = function () {};
                 type : "temperature",
                 deviceId : mesure.sensor,
                 values : [{value : mesure.value}],
-                actuators : []
+                actuators : [],
+                type : "weather"
             }
 
             params.db.save(params.poolName + "-" + "temperature-" + mesure.sensor, obj);
@@ -189,7 +194,8 @@ objs.humidity = function () {};
                 type : "humidity",
                 deviceId : mesure.sensor,
                 values : [{value : mesure.value}],
-                actuators : []
+                actuators : [],
+                type : "weather"
             }
 
             params.db.save(params.poolName + "-" + "humidity-" + mesure.sensor, obj);

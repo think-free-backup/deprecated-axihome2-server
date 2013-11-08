@@ -71,7 +71,8 @@ function saveState(state, song){
 	    type : "Mpdcontroler",
 	    deviceId : "0",
 	    values : [state, song],
-	    actuators : ["play", "stop", "previous", "next", "volume"]
+	    actuators : ["play", "stop", "previous", "next", "volume"],
+	    type : "multimedia"
 	}
 
 	m_db.save(m_name + "-" + "Mpdcontroler-0", state);

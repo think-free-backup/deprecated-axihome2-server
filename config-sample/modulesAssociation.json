@@ -17,5 +17,6 @@
     {"module" : "homeWeatherStation-humidity-0", "name" : "Humidity", "place" : "Salon"},
 
     {"module" : "homeWeatherStation-temperature-2", "name" : "Temperature", "place" : "Chambre"},
-    {"module" : "homeWeatherStation-humidity-2", "name" : "Humidity", "place" : "Chambre"}
+    {"module" : "homeWeatherStation-humidity-2", "name" : "Humidity", "place" : "Chambre"},
+    {"module" : "mainZwaveControler-RoutingMultilevelSwitch-14", "name" : "Commode", "place" : "Chambre"}
 ]

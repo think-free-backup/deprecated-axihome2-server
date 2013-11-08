@@ -2,6 +2,7 @@
 var log = require('../lib/lib-log');
 var soc = require("unified.socket/unified.socket.js");
 var db = require('./lib/lib-database.js');
+var tools = require('./lib/lib-tools.js');
 var uuid = require('node-uuid');
 
 // ## Init and socket connection callback
@@ -34,7 +35,7 @@ exports.init = function(config){
 
     db.setSaveCallback(function(key, value){
 
-        // TODO : Calculate triggers here
+        tools.checkChangeTrigger(key, value);
 
         soc.broadcast({type : "setVariable", body : {variable : key, option:  "", value : value}});
     });

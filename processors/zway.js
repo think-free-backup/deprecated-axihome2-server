@@ -76,7 +76,6 @@ exports.write = function(params, deviceType, device, actuator, value){
         console.log("Error calling write for device '" + deviceType + "' actuator '" + actuator + "'");
         console.log(err)
     }
-    
 }
 
 /* ** TYPE DEFINITION ******************************************************************************************* */
@@ -96,7 +95,8 @@ objs.BinaryPowerSwitch = function () {};
             type : "BinaryPowerSwitch",
             deviceId : device,
             values : [{state : stateValue}],
-            actuators : ["setState"]
+            actuators : ["setState"],
+            type : "switch"
         }
 
         return obj;
@@ -133,7 +133,8 @@ objs.RoutingMultilevelSwitch = function(){};
             type : "RoutingMultilevelSwitch",
             deviceId : device,
             values : [{level : levelValue}],
-            actuators : ["setLevel"] 
+            actuators : ["setLevel"],
+            type : "switch"
         }
 
         return obj;
