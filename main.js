@@ -16,8 +16,13 @@ exports.init = function(config){
     
     log.write("on-domo", "Starting application");
 
+    // Loading module list defined for application
+
     var call_list = require('../lib/lib-config').load('/config/modules.json');
     var poolers = [];
+    var schedule;
+
+    // Loading application processors
 
     require("fs").readdirSync("./application/processors/").forEach(function(file) {
 
@@ -26,6 +31,8 @@ exports.init = function(config){
         log.write(config.server, "Loading application data processors : " + name);
     });
 
+    // Starting processor configured
+
     for (var idx in call_list){
 
         var p = call_list[idx];
@@ -33,12 +40,23 @@ exports.init = function(config){
             poolers[p.processor].run(p.name, p.poolInterval, p.params, db);
     }
 
+    // Db changed trigger
+
     db.setSaveCallback(function(key, value){
 
         tools.checkChangeTrigger(key, value);
 
         soc.broadcast({type : "setVariable", body : {variable : key, option:  "", value : value}});
     });
+
+    // Scheduler
+
+    schedule = require('../lib/lib-config').load('/config/schedule.json');
+
+    for (var idx in schedule){
+
+        tools.createSceneJob(schedule[idx].cron, schedule[idx].scene);
+    }  
 }
 
 // ### clientConnected

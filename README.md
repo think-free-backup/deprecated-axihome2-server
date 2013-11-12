@@ -10,7 +10,7 @@ Install
 - Then clone this repo as application folder
 - Run : ln -s application/endpoints
 - Run : cp -R application/config ./
-- Install other deps : npm install mpd
+- Install other deps : npm install mpd cron
 
 Run
 ---
