@@ -92,7 +92,7 @@ objs.pressure = function () {};
             deviceId : "0",
             values : [{value : value}],
             actuators : [],
-            type : "weather"
+            group : "weather"
         }
 
         params.db.save(params.poolName + "-" + "pressure", obj);
@@ -112,7 +112,7 @@ objs.rain_day_total = function () {};
             deviceId : "0",
             values : [{value : value}],
             actuators : [],
-            type : "weather"
+            group : "weather"
         }
 
         params.db.save(params.poolName + "-" + "rain_day", obj);
@@ -131,7 +131,7 @@ objs.wind_dir = function () {};
             deviceId : "0",
             values : [{value : value}],
             actuators : [],
-            type : "weather"
+            group : "weather"
         }
 
         params.db.save(params.poolName + "-" + "wind_dir", obj);
@@ -150,7 +150,7 @@ objs.wind_speed = function () {};
             deviceId : "0",
             values : [{value : value}],
             actuators : [],
-            type : "weather"
+            group : "weather"
         }
 
         params.db.save(params.poolName + "-" + "wind_speed", obj);
@@ -172,7 +172,7 @@ objs.temperature = function () {};
                 deviceId : mesure.sensor,
                 values : [{value : mesure.value}],
                 actuators : [],
-                type : "weather"
+                group : "weather"
             }
 
             params.db.save(params.poolName + "-" + "temperature-" + mesure.sensor, obj);
@@ -195,7 +195,7 @@ objs.humidity = function () {};
                 deviceId : mesure.sensor,
                 values : [{value : mesure.value}],
                 actuators : [],
-                type : "weather"
+                group : "weather"
             }
 
             params.db.save(params.poolName + "-" + "humidity-" + mesure.sensor, obj);

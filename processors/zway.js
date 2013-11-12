@@ -96,7 +96,7 @@ objs.BinaryPowerSwitch = function () {};
             deviceId : device,
             values : [{state : stateValue}],
             actuators : ["setState"],
-            type : "switch"
+            group : "switch"
         }
 
         return obj;
@@ -134,7 +134,7 @@ objs.RoutingMultilevelSwitch = function(){};
             deviceId : device,
             values : [{level : levelValue}],
             actuators : ["setLevel"],
-            type : "switch"
+            group : "switch"
         }
 
         return obj;
