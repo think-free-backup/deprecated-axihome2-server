@@ -1,0 +1,13 @@
+{
+  "name": "axihome-server",
+  "version" : "0.0.1",
+  "description": "A domotic server based on nutsy",
+  "author": "Christophe Meurice <meumeu1402@gmail.com>",
+  "dependencies" : {
+    "mpd": "*",
+    "cron" : "*"
+  },
+  "engine": {
+    "node" : ">= 0.8.8"
+  }
+}
