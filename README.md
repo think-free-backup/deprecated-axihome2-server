@@ -3,6 +3,18 @@ axihome-server
 
 Automation intergrated for home's server based on nutsy server
 
+What ?
+------
+
+Axihome-server can connect to different backend to integrate every piece of your home automation together in one place.
+
+- Zwave (razpberry)
+- Mpd (Music player daemon)
+- Wmr100 (Oregon scientific weather station)
+- You can devellop your own backend ! (see /processors for examples)
+
+It has been develloped to work on a raspberry pi but you can run it on any hardware that support node.js
+
 Install
 -------
 
