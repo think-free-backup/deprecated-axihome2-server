@@ -26,9 +26,8 @@ exports.init = function(config){
 
     require("fs").readdirSync("./application/processors/").forEach(function(file) {
 
-        var name = file.split(".js")[0];
-        poolers[name] = require("./processors/" + file);
-        log.write(config.server, "Loading application data processors : " + name);
+        poolers[file] = require("./processors/" + file + "/main.js");
+        log.write(config.server, "Loading application data processors : " + file);
     });
 
     // Starting processor configured
@@ -36,8 +35,11 @@ exports.init = function(config){
     for (var idx in call_list){
 
         var p = call_list[idx];
-        if (p.active)
+
+        if (p.active){
+            log.write(config.server, "Running module : " + p.processor);
             poolers[p.processor].run(p.name, p.poolInterval, p.params, db);
+        }
     }
 
     // Db changed trigger
