@@ -32,6 +32,15 @@ Configuration interface
 >   
 > **Create a scene**  
 >   
+>   List of actions for the scene, a scene can be played by the scheduler, a trigger or the user interface
+>   
+>>   processorName : the instance name of the processor  
+>>   processor : the backend  
+>>   deviceType : the type of device  
+>>   device : the id of the device  
+>>   actuator : the actuator of the device  
+>>   value : the value to put to the device actuator  
+>>   delay : delay before sending this value  
 >   
 > Scenes association :  
 > --------------------  
@@ -50,10 +59,18 @@ Configuration interface
 >   
 > 	cron : textEntry  
 > 	scene : get scene list  
+>   conditions : list of device status needed to play the scene
 >   
 > -> Should add one or more condition to play or not the scene  
 >   
 > Trigger :  
 > ---------  
 >   
-> **Configure trigger when a variable change**  > 
+> **Configure trigger when a variable change**
+>
+> Virtual devices :
+> -----------------
+>
+> **Create and set status of virtual devices**
+>
+

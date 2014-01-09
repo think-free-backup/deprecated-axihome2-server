@@ -1,6 +1,6 @@
 {
-    "server" : "on-domo",
-    "version" : "0.0.1",
+    "server" : "axihome",
+    "version" : "0.0.2",
     "debug" : false,
     "ports" : {
         "socketIo" : 20000,

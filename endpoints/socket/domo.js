@@ -4,7 +4,6 @@ var soc = require("unified.socket/unified.socket.js");
 var db = require('../../lib/lib-database.js');
 var tools = require('../../lib/lib-tools.js');
 var config = require('../../../lib/lib-config');
-var modules = config.load( '/config/modules.json')
 
 /* Get configuration */
 /* *********************************************************************** */
@@ -13,9 +12,9 @@ var modules = config.load( '/config/modules.json')
 // Params : socket, params
 // Get all devices
 
-exports.getAllModules = function(socket, params){
+exports.getAllDevices = function(socket, params){
     
-    socket.send({type : "setVariable", body : {variable : "modules", option:  "", value : {modules : db.getAll() }}});
+    socket.send({type : "setVariable", body : {variable : "devices", option:  "", value : {devices : db.getAll() }}});
 }
 
 // ### getPlaces
@@ -27,13 +26,13 @@ exports.getPlaces = function(socket, params){
     socket.send({type : "setVariable", body : {variable : "places", option:  "", value : {places : tools.getPlaces() }}});
 }
 
-// ### getModulesAssociations
+// ### getDevicesAssociations
 // Params : socket, params
-// Get all module/places associations
+// Get all device/places associations
 
-exports.getModulesAssociation = function(socket, params){
+exports.getDevicesAssociation = function(socket, params){
     
-    socket.send({type : "setVariable", body : {variable : "modulesAssociation", option:  "", value : {modulesAssociation : config.load('/config/modulesAssociation.json')}}});
+    socket.send({type : "setVariable", body : {variable : "devicesAssociation", option:  "", value : {devicesAssociation : config.load('/config/devicesAssociation.json')}}});
 }
 
 // ### getScenes
@@ -48,14 +47,14 @@ exports.getScenes = function (socket, params){
 /* Call application */
 /* *********************************************************************** */
 
-// ### callModule
+// ### callDevice
 // Params : socket, params
 // Call a processor function
 
-exports.callModule = function(socket, params){
+exports.callDevice = function(socket, params){
 
 
-    tools.callModule(params[1], params[0], params[2], params[3], params[4], params[5])
+    tools.callDevice(params[1], params[0], params[2], params[3], params[4], params[5])
 }
 
 exports.loadScene = function(socket, params){
