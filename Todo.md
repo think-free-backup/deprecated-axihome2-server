@@ -5,19 +5,25 @@ Configuration interface
 
 ***
 
-Modules :
+Instance :
 ---------
 
-**Configure a backend module**
+**Configure a backend instance**
 
 	backend : [get list from application backends folders]  
 	name : textEntry  
 	poolInterval : seconds * 1000  
-	params : get all config entries for this module from config.json of the module  
+	params : get all config entries for this instance from config.json of the instance  
 	active or not  
+
+- getAllBackends() : ok
+- getConfigForBackend() : ok
+- useInstance(name,true|false) : ok
+- createInstance(backend, name, poolInterval, active, params[]) : ok
+- deleteInstance(name) : ok
   
   
-Modules association :  
+Devices association :  
 ---------------------  
   
 **Associate object of the module in a place**  

@@ -18,7 +18,7 @@ exports.init = function(config){
 
     // Loading module list defined for application
 
-    var call_list = require('../lib/lib-config').load('/config/modules.json');
+    var call_list = require('../lib/lib-config').load('/config/instances.json');
     var instances = [];
     var schedule;
 

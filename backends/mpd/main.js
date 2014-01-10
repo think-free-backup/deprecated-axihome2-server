@@ -23,7 +23,7 @@ exports.run = function(name, poolInterval, params, db){
 	m_db = db;
 	m_name = name
     
-    connect(params.host, params.port);
+    connect(params.host, parseInt(params.port));
 }
 
 exports.write = function(params, deviceType, device, actuator, value){
