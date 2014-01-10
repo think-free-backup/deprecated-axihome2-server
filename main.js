@@ -19,26 +19,26 @@ exports.init = function(config){
     // Loading module list defined for application
 
     var call_list = require('../lib/lib-config').load('/config/modules.json');
-    var poolers = [];
+    var instances = [];
     var schedule;
 
-    // Loading application processors
+    // Loading application backends
 
-    require("fs").readdirSync("./application/processors/").forEach(function(file) {
+    require("fs").readdirSync("./application/backends/").forEach(function(file) {
 
-        poolers[file] = require("./processors/" + file + "/main.js");
-        log.write(config.server, "Loading application data processors : " + file);
+        instances[file] = require("./backends/" + file + "/main.js");
+        log.write(config.server, "Loading application data backend : " + file);
     });
 
-    // Starting processor configured
+    // Starting backend configured
 
     for (var idx in call_list){
 
         var p = call_list[idx];
 
         if (p.active){
-            log.write(config.server, "Running module : " + p.processor);
-            poolers[p.processor].run(p.name, p.poolInterval, p.params, db);
+            log.write(config.server, "Running module : " + p.backend);
+            instances[p.backend].run(p.name, p.poolInterval, p.params, db);
         }
     }
 

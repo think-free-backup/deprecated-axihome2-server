@@ -94,8 +94,8 @@ objs.atmosphere = function () {};
             
             var obj = {
 
-                processor : "yahoo-weather",
-                pooler : params.poolName,
+                backend : "yahoo-weather",
+                instance : params.poolName,
                 type : key,
                 deviceId : "0",
                 values : [{value : value}],
@@ -119,8 +119,8 @@ objs.astronomy = function () {};
             
             var obj = {
 
-                processor : "yahoo-weather",
-                pooler : params.poolName,
+                backend : "yahoo-weather",
+                instance : params.poolName,
                 type : key,
                 deviceId : "0",
                 values : [{value : value}],
@@ -152,8 +152,8 @@ objs.wind = function () {};
             
             var obj = {
 
-                processor : "yahoo-weather",
-                pooler : params.poolName,
+                backend : "yahoo-weather",
+                instance : params.poolName,
                 type : key,
                 deviceId : "0",
                 values : [{value : value}],
@@ -175,8 +175,8 @@ objs.item = function () {};
 
         var obj = {
 
-            processor : "yahoo-weather",    
-            pooler : params.poolName,
+            backend : "yahoo-weather",    
+            instance : params.poolName,
             type : "temperature",
             deviceId : "0",
             values : [{value : temp}],

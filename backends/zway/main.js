@@ -90,8 +90,8 @@ objs.BinaryPowerSwitch = function () {};
 
         var obj = {
 
-            processor : "zway",
-            pooler : params.poolName,
+            backend : "zway",
+            instance : params.poolName,
             type : "BinaryPowerSwitch",
             deviceId : device,
             values : [{state : stateValue}],
@@ -128,8 +128,8 @@ objs.RoutingMultilevelSwitch = function(){};
 
         var obj = {
 
-            processor : "zway",
-            pooler : params.poolName,
+            backend : "zway",
+            instance : params.poolName,
             type : "RoutingMultilevelSwitch",
             deviceId : device,
             values : [{level : levelValue}],

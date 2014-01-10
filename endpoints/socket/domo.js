@@ -49,13 +49,17 @@ exports.getScenes = function (socket, params){
 
 // ### callDevice
 // Params : socket, params
-// Call a processor function
+// Call a backend function
 
 exports.callDevice = function(socket, params){
 
 
     tools.callDevice(params[1], params[0], params[2], params[3], params[4], params[5])
 }
+
+// ### loadScene
+// Params : socket, params
+// Load a scene
 
 exports.loadScene = function(socket, params){
 

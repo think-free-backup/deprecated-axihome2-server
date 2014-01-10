@@ -1,8 +1,8 @@
 {
 	"actions" : 
 		[
-			{ "name" : "mainZwaveControler", "processor" : "zway", "deviceType" : "BinaryPowerSwitch", "device" : "2", "actuator" : "setState", "value" : "0", "delay" : 0 },
-			{ "name" : "mainZwaveControler", "processor" : "zway", "deviceType" : "RoutingMultilevelSwitch", "device" : "3", "actuator" : "setLevel", "value" : "20", "delay" : 0 },
-			{ "name" : "mainZwaveControler", "processor" : "zway", "deviceType" : "BinaryPowerSwitch", "device" : "4", "actuator" : "setState", "value" : "0", "delay" : 0 }
+			{ "name" : "mainZwaveControler", "backend" : "zway", "deviceType" : "BinaryPowerSwitch", "device" : "2", "actuator" : "setState", "value" : "0", "delay" : 0 },
+			{ "name" : "mainZwaveControler", "backend" : "zway", "deviceType" : "RoutingMultilevelSwitch", "device" : "3", "actuator" : "setLevel", "value" : "20", "delay" : 0 },
+			{ "name" : "mainZwaveControler", "backend" : "zway", "deviceType" : "BinaryPowerSwitch", "device" : "4", "actuator" : "setState", "value" : "0", "delay" : 0 }
 		]	
 }

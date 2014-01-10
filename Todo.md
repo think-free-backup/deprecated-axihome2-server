@@ -10,7 +10,7 @@ Modules :
 
 **Configure a backend module**
 
-	processor : [get list from application processors folders]  
+	backend : [get list from application backends folders]  
 	name : textEntry  
 	poolInterval : seconds * 1000  
 	params : get all config entries for this module from config.json of the module  
@@ -34,8 +34,8 @@ Scenes :
   
   List of actions for the scene, a scene can be played by the scheduler, a trigger or the user interface
   
->   processorName : the instance name of the processor  
->   processor : the backend  
+>   backendName : the instance name of the processor  
+>   backend : the backend  
 >   deviceType : the type of device  
 >   device : the id of the device  
 >   actuator : the actuator of the device  

@@ -66,8 +66,8 @@ function saveState(state, song){
 
 	var state = {
 
-	    processor : "mpd",
-	    pooler : m_name,
+	    backend : "mpd",
+	    instance : m_name,
 	    type : "Mpdcontroler",
 	    deviceId : "0",
 	    values : [state, song],

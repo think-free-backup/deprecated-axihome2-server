@@ -12,7 +12,7 @@ Axihome-server can connect to different backend to integrate every piece of your
 - Mpd (Music player daemon)
 - Wmr100 (Oregon scientific weather station)
 - More coming !
-- You can devellop your own backend ! (see /processors for examples)
+- You can devellop your own backend ! (see /backends for examples)
 
 It has been develloped to work on a raspberry pi but you can run it on any hardware that support node.js
 

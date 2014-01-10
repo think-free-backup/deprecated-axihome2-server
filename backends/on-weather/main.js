@@ -87,7 +87,7 @@ objs.pressure = function () {};
 
         var obj = {
 
-            pooler : params.poolName,
+            instance : params.poolName,
             type : "pressure",
             deviceId : "0",
             values : [{value : value}],
@@ -107,7 +107,7 @@ objs.rain_day_total = function () {};
 
         var obj = {
 
-            pooler : params.poolName,
+            instance : params.poolName,
             type : "rain_day",
             deviceId : "0",
             values : [{value : value}],
@@ -126,7 +126,7 @@ objs.wind_dir = function () {};
 
         var obj = {
 
-            pooler : params.poolName,
+            instance : params.poolName,
             type : "wind_dir",
             deviceId : "0",
             values : [{value : value}],
@@ -145,7 +145,7 @@ objs.wind_speed = function () {};
 
         var obj = {
 
-            pooler : params.poolName,
+            instance : params.poolName,
             type : "wind_speed",
             deviceId : "0",
             values : [{value : value}],
@@ -167,7 +167,7 @@ objs.temperature = function () {};
             
             var obj = {
 
-                pooler : params.poolName,
+                instance : params.poolName,
                 type : "temperature",
                 deviceId : mesure.sensor,
                 values : [{value : mesure.value}],
@@ -190,7 +190,7 @@ objs.humidity = function () {};
             
             var obj = {
 
-                pooler : params.poolName,
+                instance : params.poolName,
                 type : "humidity",
                 deviceId : mesure.sensor,
                 values : [{value : mesure.value}],

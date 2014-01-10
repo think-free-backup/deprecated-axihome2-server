@@ -2,20 +2,20 @@
 
 var db = require('../../lib/lib-database.js');
 
-// ### getAllModules
+// ### getAllDevices
 // Params : params
-// Return all modules known by the system at this time
+// Return all devices known by the system at this time
 
-exports.getAllModules = function(req,res,next){
+exports.getAllDevices = function(req,res,next){
     
     res.json(db.getAll());
 }
 
-// ### getAllModulesNames
+// ### getAllDevicesId
 // Params : params
-// Return the identifier of all modules
+// Return the identifier of all devices
 
-exports.getAllModulesId = function(req, res, next){
+exports.getAllDevicesId = function(req, res, next){
     
     var js = [];
 
@@ -24,8 +24,12 @@ exports.getAllModulesId = function(req, res, next){
     for (var key in mod){
         var value = mod[key];
         
-        js.push(value.pooler + "-" + value.type + "-" + value.deviceId);
+        js.push(value.instance + "-" + value.type + "-" + value.deviceId);
     }
 
     res.json(js);
+}
+
+exports.getAllBackends = function(req, res, next){
+	
 }
