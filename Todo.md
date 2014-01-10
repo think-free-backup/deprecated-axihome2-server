@@ -26,12 +26,17 @@ Instance :
 Devices association :  
 ---------------------  
   
-**Associate object of the module in a place**  
+**Associate object of the device in a place**  
   
-	module : Get module list (from ? Database ?)  
+	device : Get device list (from ? Database ?)  
 	name : textEntry  
 	place : ComboBox (lib-tools::getPlaces) + textEntry to add one  
-  
+
+- getAllDevicesId() : ok (value.deviceId ?)
+- getPlaces()
+- addPlace(name)
+- addAssociation(device, name, place)
+
   
 Scenes :  
 --------  
