@@ -36,6 +36,7 @@ Devices association :
 - getPlaces()
 - addPlace(name)
 - addAssociation(device, name, place)
+- removeAssociation(device, place)
 
   
 Scenes :  
