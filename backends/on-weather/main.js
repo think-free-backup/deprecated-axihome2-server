@@ -95,7 +95,7 @@ objs.pressure = function () {};
             group : "weather"
         }
 
-        params.db.save(params.poolName + "-" + "pressure", obj);
+        params.db.save(params.poolName + "-" + "pressure-0", obj);
     }
 
 
@@ -115,7 +115,7 @@ objs.rain_day_total = function () {};
             group : "weather"
         }
 
-        params.db.save(params.poolName + "-" + "rain_day", obj);
+        params.db.save(params.poolName + "-" + "rain_day-0", obj);
     }
 
 // ### wind_dir
@@ -134,7 +134,7 @@ objs.wind_dir = function () {};
             group : "weather"
         }
 
-        params.db.save(params.poolName + "-" + "wind_dir", obj);
+        params.db.save(params.poolName + "-" + "wind_dir-0", obj);
     }
 
 // ### wind_speed
@@ -153,7 +153,7 @@ objs.wind_speed = function () {};
             group : "weather"
         }
 
-        params.db.save(params.poolName + "-" + "wind_speed", obj);
+        params.db.save(params.poolName + "-" + "wind_speed-0", obj);
     }
 
 // ### temperature

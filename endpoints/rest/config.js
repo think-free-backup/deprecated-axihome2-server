@@ -2,7 +2,7 @@
 
 var db = require('../../lib/lib-database.js');
 var config = require('../../../lib/lib-config');
-
+var tools = require('../../lib/lib-tools.js');
 
 
 /* Get the configuration */
@@ -13,8 +13,28 @@ var config = require('../../../lib/lib-config');
 // Return all devices known by the system at this time
 
 exports.getAllDevices = function(req,res,next){
+
+    var assoc = config.load( '/config/devicesAssociation.json');
+    var dev = db.getAll();
+
+    var ar = [];
+
+    for (var idx in assoc){
+
+        ar[assoc[idx].device] = assoc[idx];
+    }
+
+    var ret = [];
+
+    for (var idx in dev){
+
+        var el = dev[idx];
+        var as = ar [ el.instance + "-" + el.type + "-" + el.deviceId ];
+        if ( as !== undefined)
+            dev[idx].place = as.place
+    }
     
-    res.json(db.getAll());
+    res.json(dev);
 }
 
 // ### getAllDevicesId
@@ -70,6 +90,10 @@ exports.getAllInstances = function(req, res, next){
     res.json( config.load( '/config/instances.json') );
 }
 
+exports.getPlaces = function(req, res, next){
+
+    res.json(tools.getPlaces() );
+}
 
 
 /* Instance managment */
@@ -131,4 +155,42 @@ exports.deleteInstance = function(req, res, next){
     config.write('/config/instances.json', instList);
 
     res.json(instList);
+}
+
+/* Device association */
+/* ************************************************************ */
+
+exports.addAssociation = function(req, res, next){
+
+    var device = req.params.device;
+    var name = req.params.name;
+    var place = req.params.place;
+
+    var assoc = config.load( '/config/devicesAssociation.json');
+
+    assoc.push({device : device, name : name, place : place});
+
+    config.write('/config/devicesAssociation.json', assoc);
+
+    res.json(assoc);
+}
+
+exports.removeAssociation = function(req, res, next){
+
+    var device = req.params.device;
+    var place = req.params.place;
+
+    var assoc = config.load( '/config/devicesAssociation.json');
+
+    for (var key in assoc){
+
+        if ( assoc[key].device === device && assoc[key].place === place){
+
+            assoc.splice(key,1);
+        }
+    }
+
+    config.write('/config/devicesAssociation.json', assoc);
+
+    res.json(assoc);
 }

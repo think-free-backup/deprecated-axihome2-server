@@ -103,7 +103,7 @@ objs.atmosphere = function () {};
                 group : "weather"
             }
 
-            params.db.save(params.poolName + "-" + key, obj);
+            params.db.save(params.poolName + "-" + key + "-0", obj);
         }
     }
 
@@ -128,7 +128,7 @@ objs.astronomy = function () {};
                 group : "weather"
             }
 
-            params.db.save(params.poolName + "-" + key, obj);
+            params.db.save(params.poolName + "-" + key + "-0", obj);
         }
     }
 
@@ -161,7 +161,7 @@ objs.wind = function () {};
                 group : "weather"
             }
 
-            params.db.save(params.poolName + "-" + key, obj);
+            params.db.save(params.poolName + "-" + key + "-0", obj);
         }
     }
 
@@ -184,5 +184,5 @@ objs.item = function () {};
             group : "weather"
         }
 
-        params.db.save(params.poolName + "-" + "temperature", obj);
+        params.db.save(params.poolName + "-" + "temperature-0", obj);
     }

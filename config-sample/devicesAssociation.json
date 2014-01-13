@@ -1,23 +1,97 @@
 [
-    {"device" : "mainWeather-visibility", "name" : "Visibility", "place" : "Home"},
-    {"device" : "mainWeather-sunrise", "name" : "Sunrise", "place" : "Home"},
-    {"device" : "mainWeather-sunset", "name" : "Sunset", "place" : "Home"},
-    {"device" : "homeWeatherStation-pressure", "name" : "Pressure", "place" : "Home"},
-    {"device" : "homeWeatherStation-rain_day", "name" : "Rain", "place" : "Home"},
-    {"device" : "homeWeatherStation-wind_dir", "name" : "Wind dir", "place" : "Home"},
-    {"device" : "homeWeatherStation-wind_speed", "name" : "Wind speed", "place" : "Home"},
-    {"device" : "homeWeatherStation-temperature-1", "name" : "Temperature", "place" : "Home"},
-    {"device" : "homeWeatherStation-humidity-1", "name" : "Humidity", "place" : "Home"},
-
-    {"device" : "mpdSalon-Mpdcontroler-0", "name" : "Music", "place" : "Salon"},
-    {"device" : "mainZwaveControler-BinaryPowerSwitch-2", "name" : "Salon", "place" : "Salon"},
-    {"device" : "mainZwaveControler-RoutingMultilevelSwitch-3", "name" : "Halogene", "place" : "Salon"},
-    {"device" : "mainZwaveControler-BinaryPowerSwitch-4", "name" : "Bibliotheque", "place" : "Salon"},
-    {"device" : "mainZwaveControler-BinaryPowerSwitch-16", "name" : "Sapin", "place" : "Salon"},
-    {"device" : "homeWeatherStation-temperature-0", "name" : "Temperature", "place" : "Salon"},
-    {"device" : "homeWeatherStation-humidity-0", "name" : "Humidity", "place" : "Salon"},
-
-    {"device" : "homeWeatherStation-temperature-2", "name" : "Temperature", "place" : "Chambre"},
-    {"device" : "homeWeatherStation-humidity-2", "name" : "Humidity", "place" : "Chambre"},
-    {"device" : "mainZwaveControler-RoutingMultilevelSwitch-14", "name" : "Commode", "place" : "Chambre"}
+    {
+        "device": "mainWeather-visibility-0",
+        "name": "Visibility",
+        "place": "Home"
+    },
+    {
+        "device": "mainWeather-sunrise-0",
+        "name": "Sunrise",
+        "place": "Home"
+    },
+    {
+        "device": "mainWeather-sunset-0",
+        "name": "Sunset",
+        "place": "Home"
+    },
+    {
+        "device": "homeWeatherStation-pressure-0",
+        "name": "Pressure",
+        "place": "Home"
+    },
+    {
+        "device": "homeWeatherStation-rain_day-0",
+        "name": "Rain",
+        "place": "Home"
+    },
+    {
+        "device": "homeWeatherStation-wind_dir-0",
+        "name": "Wind dir",
+        "place": "Home"
+    },
+    {
+        "device": "homeWeatherStation-wind_speed-0",
+        "name": "Wind speed",
+        "place": "Home"
+    },
+    {
+        "device": "homeWeatherStation-temperature-1",
+        "name": "Temperature",
+        "place": "Home"
+    },
+    {
+        "device": "homeWeatherStation-humidity-1",
+        "name": "Humidity",
+        "place": "Home"
+    },
+    {
+        "device": "mpdSalon-Mpdcontroler-0",
+        "name": "Music",
+        "place": "Salon"
+    },
+    {
+        "device": "mainZwaveControler-BinaryPowerSwitch-2",
+        "name": "Salon",
+        "place": "Salon"
+    },
+    {
+        "device": "mainZwaveControler-RoutingMultilevelSwitch-3",
+        "name": "Halogene",
+        "place": "Salon"
+    },
+    {
+        "device": "mainZwaveControler-BinaryPowerSwitch-4",
+        "name": "Bibliotheque",
+        "place": "Salon"
+    },
+    {
+        "device": "homeWeatherStation-temperature-0",
+        "name": "Temperature",
+        "place": "Salon"
+    },
+    {
+        "device": "homeWeatherStation-humidity-0",
+        "name": "Humidity",
+        "place": "Salon"
+    },
+    {
+        "device": "mainZwaveControler-BinaryPowerSwitch-16",
+        "name": "Plan travail",
+        "place": "Cuisine"
+    },
+    {
+        "device": "homeWeatherStation-temperature-2",
+        "name": "Temperature",
+        "place": "Chambre"
+    },
+    {
+        "device": "homeWeatherStation-humidity-2",
+        "name": "Humidity",
+        "place": "Chambre"
+    },
+    {
+        "device": "mainZwaveControler-RoutingMultilevelSwitch-14",
+        "name": "Commode",
+        "place": "Chambre"
+    }
 ]

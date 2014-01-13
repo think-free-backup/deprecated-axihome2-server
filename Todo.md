@@ -32,10 +32,10 @@ Devices association :
 	name : textEntry  
 	place : ComboBox (lib-tools::getPlaces) + textEntry to add one  
 
-- getAllDevicesId() : ok (value.deviceId ?)
-- getPlaces()
-- addPlace(name)
-- addAssociation(device, name, place)
+- getAllDevices() : ok
+- getPlaces() : ok
+- addAssociation(device, name, place) : ok
+- removeAssociation(device, place) : ok
 
   
 Scenes :  
