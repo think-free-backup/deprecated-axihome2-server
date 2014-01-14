@@ -14,25 +14,7 @@ var tools = require('../../lib/lib-tools.js');
 
 exports.getAllDevices = function(req,res,next){
 
-    var assoc = config.load( '/config/devicesAssociation.json');
     var dev = db.getAll();
-
-    var ar = [];
-
-    for (var idx in assoc){
-
-        ar[assoc[idx].device] = assoc[idx];
-    }
-
-    var ret = [];
-
-    for (var idx in dev){
-
-        var el = dev[idx];
-        var as = ar [ el.instance + "-" + el.type + "-" + el.deviceId ];
-        if ( as !== undefined)
-            dev[idx].place = as.place
-    }
     
     res.json(dev);
 }
@@ -54,6 +36,11 @@ exports.getAllDevicesId = function(req, res, next){
     }
 
     res.json(js);
+}
+
+exports.getDevicesAssociation = function(req, res, next){
+
+    res.json(config.load( '/config/devicesAssociation.json'));
 }
 
 // ### getAllBackends
