@@ -71,7 +71,7 @@ Schedule :
   
 	cron : textEntry  
 	scene : get scene list  
-  conditions : list of device status needed to play the scene
+    conditions : list of device status needed to play the scene
   
 -> Should add one or more condition to play or not the scene  
   
@@ -83,6 +83,27 @@ Trigger :
 Virtual devices :
 -----------------
 
-**Create and set status of virtual devices**
+**Create and set status of virtual devices**  
+
+Virtual devices can be used as conditions in scenes for example, users will edit there values  
+
+
+***
+
+Database storage
+================
+
+***
+
+Store values to a database (couchdb ?, LevelDB ?)
+
+
+***
+
+Notifications
+=============
+
+***
+
 
 
