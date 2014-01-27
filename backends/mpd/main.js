@@ -63,7 +63,7 @@ exports.write = function(params, deviceType, device, actuator, value){
 
 function saveState(state, song){
 
-	var state = {
+	var st = {
 
 	    backend : "mpd",
 	    instance : m_name,
@@ -74,7 +74,7 @@ function saveState(state, song){
 	    group : "multimedia"
 	}
 
-	db.save(m_name + "-" + "Mpdcontroler-0", state);
+	db.save(m_name + "-" + "Mpdcontroler-0", st);
 }
 
 

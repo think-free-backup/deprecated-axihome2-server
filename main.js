@@ -57,7 +57,7 @@ exports.init = function(config){
 
     for (var idx in schedule){
 
-        tools.createSceneJob(schedule[idx].cron, schedule[idx].scene);
+        tools.createSceneJob(schedule[idx]);
     }  
 }
 

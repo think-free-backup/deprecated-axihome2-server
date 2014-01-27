@@ -1,0 +1,4 @@
+{
+	"homeWeatherStation-temperature-1" : { "startTime" : "07:00", "endTime" : "22:00", "dayOfWeek" : [0,1,2,3,4], "conditions" : [ ["homeWeatherStation-temperature-1", 0, "value", ">", 25] ], "scene" : "heatingStop" },
+	"Test-virtual-0" : { "startTime" : "07:00", "endTime" : "22:00", "dayOfWeek" : [0,1,2,3,4], "conditions" : [ ["Test-virtual-0", 0, "value", ">", 25] ], "scene" : "heatingStop" }
+}
