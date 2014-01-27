@@ -1,5 +1,6 @@
 
 var restify = require('restify');
+var db = require('../../lib/lib-database.js');
 
 // ### Local variable definition
 
@@ -11,11 +12,11 @@ var windir = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW"
 // Params : name, poolInterval, params, db
 // Start backend
 
-exports.run = function(name, poolInterval, params, db){
+exports.run = function(name, poolInterval, params){
     
     var timer;
     var olderTs = -1;
-    var parameters = {instanceName : name, poolInterval : poolInterval, params : params, db : db, timer : timer, olderTs : olderTs};
+    var parameters = {instanceName : name, poolInterval : poolInterval, params : params, timer : timer, olderTs : olderTs};
 
     pool(parameters);
 }
@@ -96,7 +97,7 @@ objs.pressure = function () {};
             group : "weather"
         }
 
-        params.db.save(params.instanceName + "-" + "pressure-0", obj);
+        db.save(params.instanceName + "-" + "pressure-0", obj);
     }
 
 
@@ -116,7 +117,7 @@ objs.rain_day_total = function () {};
             group : "weather"
         }
 
-        params.db.save(params.instanceName + "-" + "rain_day-0", obj);
+        db.save(params.instanceName + "-" + "rain_day-0", obj);
     }
 
 // ### wind_dir
@@ -135,7 +136,7 @@ objs.wind_dir = function () {};
             group : "weather"
         }
 
-        params.db.save(params.instanceName + "-" + "wind_dir-0", obj);
+        db.save(params.instanceName + "-" + "wind_dir-0", obj);
     }
 
 // ### wind_speed
@@ -154,7 +155,7 @@ objs.wind_speed = function () {};
             group : "weather"
         }
 
-        params.db.save(params.instanceName + "-" + "wind_speed-0", obj);
+        db.save(params.instanceName + "-" + "wind_speed-0", obj);
     }
 
 // ### temperature
@@ -176,7 +177,7 @@ objs.temperature = function () {};
                 group : "weather"
             }
 
-            params.db.save(params.instanceName + "-" + "temperature-" + mesure.sensor, obj);
+            db.save(params.instanceName + "-" + "temperature-" + mesure.sensor, obj);
         }
     }
 
@@ -199,6 +200,6 @@ objs.humidity = function () {};
                 group : "weather"
             }
 
-            params.db.save(params.instanceName + "-" + "humidity-" + mesure.sensor, obj);
+            db.save(params.instanceName + "-" + "humidity-" + mesure.sensor, obj);
         }
     }

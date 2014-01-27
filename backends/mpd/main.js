@@ -1,3 +1,4 @@
+var db = require('../../lib/lib-database.js');
 
 var mpd = require('mpd'),
     cmd = mpd.cmd
@@ -8,7 +9,6 @@ var client;
 var connectTimeout;
 var statusChecker;
 
-var m_db;
 var m_name;
 
 var state = {};
@@ -18,9 +18,8 @@ var song = {};
 // Params : name, poolInterval, params, db
 // Start backend
 
-exports.run = function(name, poolInterval, params, db){
+exports.run = function(name, poolInterval, params){
 
-	m_db = db;
 	m_name = name
     
     connect(params.host, parseInt(params.port));
@@ -75,7 +74,7 @@ function saveState(state, song){
 	    group : "multimedia"
 	}
 
-	m_db.save(m_name + "-" + "Mpdcontroler-0", state);
+	db.save(m_name + "-" + "Mpdcontroler-0", state);
 }
 
 
@@ -172,8 +171,6 @@ function connect(host, port){
 	});
 
 	client.on('end', function() {
-
-		console.log("Disconnected from mpd");
 
 		if (statusChecker !== undefined && statusChecker !== null){
 

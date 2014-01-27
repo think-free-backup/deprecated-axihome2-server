@@ -1,5 +1,6 @@
 
 var restify = require('restify');
+var db = require('../../lib/lib-database.js');
 
 // ### Local variable definition
 
@@ -16,10 +17,10 @@ var langWindDir = new Array(
 // Params : name, poolInterval, params, db
 // Start backend
 
-exports.run = function(name, poolInterval, params, db){
+exports.run = function(name, poolInterval, params){
     
     var timer;
-    var parameters = {instanceName : name, poolInterval : poolInterval, params : params, db : db, timer : timer};
+    var parameters = {instanceName : name, poolInterval : poolInterval, params : params, timer : timer};
 
     pool(parameters);
 }
@@ -103,7 +104,7 @@ objs.atmosphere = function () {};
                 group : "weather"
             }
 
-            params.db.save(params.instanceName + "-" + key + "-0", obj);
+            db.save(params.instanceName + "-" + key + "-0", obj);
         }
     }
 
@@ -128,7 +129,7 @@ objs.astronomy = function () {};
                 group : "weather"
             }
 
-            params.db.save(params.instanceName + "-" + key + "-0", obj);
+            db.save(params.instanceName + "-" + key + "-0", obj);
         }
     }
 
@@ -161,7 +162,7 @@ objs.wind = function () {};
                 group : "weather"
             }
 
-            params.db.save(params.instanceName + "-" + key + "-0", obj);
+            db.save(params.instanceName + "-" + key + "-0", obj);
         }
     }
 
@@ -184,5 +185,5 @@ objs.item = function () {};
             group : "weather"
         }
 
-        params.db.save(params.instanceName + "-" + "temperature-0", obj);
+        db.save(params.instanceName + "-" + "temperature-0", obj);
     }

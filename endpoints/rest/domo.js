@@ -14,3 +14,9 @@ exports.loadScene = function(req,res,next){
     		res.json({type : "error", body : ret.code});	
     });
 }
+
+exports.writeVirtualDevice = function(req, res, next){
+
+	tools.writeVirtualDevice(req.params.device, req.params.value);
+	res.json({type : "ok", body : "Device saved"});	
+}

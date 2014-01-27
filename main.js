@@ -38,7 +38,7 @@ exports.init = function(config){
 
         if (p.active){
             log.write(config.server, "Running module : " + p.backend);
-            instances[p.backend].run(p.name, p.poolInterval, p.params, db);
+            instances[p.backend].run(p.name, p.poolInterval, p.params);
         }
     }
 

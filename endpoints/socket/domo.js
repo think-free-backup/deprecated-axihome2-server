@@ -65,3 +65,8 @@ exports.loadScene = function(socket, params){
 
 	tools.loadScene(params[0]);
 }
+
+exports.writeVirtualDevice = function(socket, params){
+
+	tools.writeVirtualDevice(params[0], params[1]);
+}

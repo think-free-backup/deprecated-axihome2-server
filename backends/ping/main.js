@@ -1,12 +1,9 @@
 
 var ping = require('pingwrap/lib/ping.js');
+var db = require('../../lib/lib-database.js');
 
-var m_db;
-var m_name;
+exports.run = function(name, poolInterval, params){
 
-exports.run = function(name, poolInterval, params, db){
-
-	m_db = db;
 	m_name = name;
 
 	var parameters = {instanceName : name, poolInterval : poolInterval, params : params};
@@ -34,7 +31,7 @@ function pool(params){
 	    	obj.values[0].value = false;
 	    }
 
-	    m_db.save(params.instanceName + "-" + "ping-0", obj);
+	    db.save(params.instanceName + "-" + "ping-0", obj);
 	});
 
 	setTimeout(pool, params.poolInterval, params);

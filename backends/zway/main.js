@@ -1,5 +1,6 @@
 
 var restify = require('restify');
+var db = require('../../lib/lib-database.js');
 
 // ### Object variable definition
 
@@ -9,10 +10,10 @@ var objs = function(){};
 // Params : name, poolInterval, params, db
 // Start backend
 
-exports.run = function(name, poolInterval, params, db){
+exports.run = function(name, poolInterval, params){
     
     var timer;
-    var parameters = {instanceName : name, poolInterval : poolInterval, params : params, db : db, timer : timer};
+    var parameters = {instanceName : name, poolInterval : poolInterval, params : params, timer : timer};
 
     pool(parameters);
 }
@@ -46,7 +47,7 @@ function pool(params){
 
                 var dev = objs[type].create(params, idx, value.instances);
 
-                params.db.save(params.instanceName + "-" + type + "-" + dev.deviceId, dev);
+                db.save(params.instanceName + "-" + type + "-" + dev.deviceId, dev);
             }
             catch(err){
 
@@ -64,8 +65,6 @@ function pool(params){
 // Write to the backend the new value
 
 exports.write = function(params, deviceType, device, actuator, value){
-
-    console.log("===================================================")
 
     try{
 

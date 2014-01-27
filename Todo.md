@@ -105,5 +105,15 @@ Notifications
 
 ***
 
+Send notification to a generic notifier which will dispach the notification
 
 
+***
+
+Fixes
+=====
+
+*****
+
+* Mpd backend can't be instanciated more than one time
+* Configuration : Devices association : Allow to associate a device in more than one place
