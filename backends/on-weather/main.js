@@ -5,6 +5,7 @@ var restify = require('restify');
 
 var objs = function(){};
 
+var windir = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NWN"];
 
 // ### run
 // Params : name, poolInterval, params, db
@@ -129,7 +130,7 @@ objs.wind_dir = function () {};
             instance : params.poolName,
             type : "wind_dir",
             deviceId : "0",
-            values : [{value : value}],
+            values : [{value : windir[value]}],
             actuators : [],
             group : "weather"
         }

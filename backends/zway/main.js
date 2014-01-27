@@ -112,7 +112,7 @@ objs.BinaryPowerSwitch = function () {};
         client.get('/ZWaveAPI/Run/devices[' + device + '].instances[0].commandClasses[37].Set(' + value + ')', function(err, req, res, obj) {
 
             if (err){
-                console.log(err);
+                console.log("Write error : " + err);
                 return;
             }
         });
@@ -150,7 +150,7 @@ objs.RoutingMultilevelSwitch = function(){};
         client.get('/ZWaveAPI/Run/devices[' + device + '].instances[0].commandClasses[38].Set(' + value + ')', function(err, req, res, obj) {
 
             if (err){
-                console.log(err);
+                console.log("Write error : " + err);
                 return;
             }
         });
