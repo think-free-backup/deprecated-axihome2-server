@@ -39,5 +39,23 @@
             "port": "6600"
         },
         "active": true
+    },
+    {
+        "backend": "ping",
+        "name": "nexus4",
+        "poolInterval": 5000,
+        "params": {
+            "host": "172.16.1.25"
+        },
+        "active": true
+    },
+    {
+        "backend": "ping",
+        "name": "xperia",
+        "poolInterval": 5000,
+        "params": {
+            "host": "172.16.1.32"
+        },
+        "active": true
     }
 ]

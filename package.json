@@ -5,7 +5,8 @@
   "author": "Christophe Meurice <meumeu1402@gmail.com>",
   "dependencies" : {
     "mpd": "*",
-    "cron" : "*"
+    "cron" : "*",
+    "pingwrap" : "*"
   },
   "engine": {
     "node" : ">= 0.8.8"

@@ -15,7 +15,7 @@ exports.run = function(name, poolInterval, params, db){
     
     var timer;
     var olderTs = -1;
-    var parameters = {poolName : name, poolInterval : poolInterval, params : params, db : db, timer : timer, olderTs : olderTs};
+    var parameters = {instanceName : name, poolInterval : poolInterval, params : params, db : db, timer : timer, olderTs : olderTs};
 
     pool(parameters);
 }
@@ -88,7 +88,7 @@ objs.pressure = function () {};
 
         var obj = {
 
-            instance : params.poolName,
+            instance : params.instanceName,
             type : "pressure",
             deviceId : "0",
             values : [{value : value}],
@@ -96,7 +96,7 @@ objs.pressure = function () {};
             group : "weather"
         }
 
-        params.db.save(params.poolName + "-" + "pressure-0", obj);
+        params.db.save(params.instanceName + "-" + "pressure-0", obj);
     }
 
 
@@ -108,7 +108,7 @@ objs.rain_day_total = function () {};
 
         var obj = {
 
-            instance : params.poolName,
+            instance : params.instanceName,
             type : "rain_day",
             deviceId : "0",
             values : [{value : value}],
@@ -116,7 +116,7 @@ objs.rain_day_total = function () {};
             group : "weather"
         }
 
-        params.db.save(params.poolName + "-" + "rain_day-0", obj);
+        params.db.save(params.instanceName + "-" + "rain_day-0", obj);
     }
 
 // ### wind_dir
@@ -127,7 +127,7 @@ objs.wind_dir = function () {};
 
         var obj = {
 
-            instance : params.poolName,
+            instance : params.instanceName,
             type : "wind_dir",
             deviceId : "0",
             values : [{value : windir[value]}],
@@ -135,7 +135,7 @@ objs.wind_dir = function () {};
             group : "weather"
         }
 
-        params.db.save(params.poolName + "-" + "wind_dir-0", obj);
+        params.db.save(params.instanceName + "-" + "wind_dir-0", obj);
     }
 
 // ### wind_speed
@@ -146,7 +146,7 @@ objs.wind_speed = function () {};
 
         var obj = {
 
-            instance : params.poolName,
+            instance : params.instanceName,
             type : "wind_speed",
             deviceId : "0",
             values : [{value : value}],
@@ -154,7 +154,7 @@ objs.wind_speed = function () {};
             group : "weather"
         }
 
-        params.db.save(params.poolName + "-" + "wind_speed-0", obj);
+        params.db.save(params.instanceName + "-" + "wind_speed-0", obj);
     }
 
 // ### temperature
@@ -168,7 +168,7 @@ objs.temperature = function () {};
             
             var obj = {
 
-                instance : params.poolName,
+                instance : params.instanceName,
                 type : "temperature",
                 deviceId : mesure.sensor,
                 values : [{value : mesure.value}],
@@ -176,7 +176,7 @@ objs.temperature = function () {};
                 group : "weather"
             }
 
-            params.db.save(params.poolName + "-" + "temperature-" + mesure.sensor, obj);
+            params.db.save(params.instanceName + "-" + "temperature-" + mesure.sensor, obj);
         }
     }
 
@@ -191,7 +191,7 @@ objs.humidity = function () {};
             
             var obj = {
 
-                instance : params.poolName,
+                instance : params.instanceName,
                 type : "humidity",
                 deviceId : mesure.sensor,
                 values : [{value : mesure.value}],
@@ -199,6 +199,6 @@ objs.humidity = function () {};
                 group : "weather"
             }
 
-            params.db.save(params.poolName + "-" + "humidity-" + mesure.sensor, obj);
+            params.db.save(params.instanceName + "-" + "humidity-" + mesure.sensor, obj);
         }
     }

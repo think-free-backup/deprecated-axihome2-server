@@ -19,7 +19,7 @@ var langWindDir = new Array(
 exports.run = function(name, poolInterval, params, db){
     
     var timer;
-    var parameters = {poolName : name, poolInterval : poolInterval, params : params, db : db, timer : timer};
+    var parameters = {instanceName : name, poolInterval : poolInterval, params : params, db : db, timer : timer};
 
     pool(parameters);
 }
@@ -95,7 +95,7 @@ objs.atmosphere = function () {};
             var obj = {
 
                 backend : "yahoo-weather",
-                instance : params.poolName,
+                instance : params.instanceName,
                 type : key,
                 deviceId : "0",
                 values : [{value : value}],
@@ -103,7 +103,7 @@ objs.atmosphere = function () {};
                 group : "weather"
             }
 
-            params.db.save(params.poolName + "-" + key + "-0", obj);
+            params.db.save(params.instanceName + "-" + key + "-0", obj);
         }
     }
 
@@ -120,7 +120,7 @@ objs.astronomy = function () {};
             var obj = {
 
                 backend : "yahoo-weather",
-                instance : params.poolName,
+                instance : params.instanceName,
                 type : key,
                 deviceId : "0",
                 values : [{value : value}],
@@ -128,7 +128,7 @@ objs.astronomy = function () {};
                 group : "weather"
             }
 
-            params.db.save(params.poolName + "-" + key + "-0", obj);
+            params.db.save(params.instanceName + "-" + key + "-0", obj);
         }
     }
 
@@ -153,7 +153,7 @@ objs.wind = function () {};
             var obj = {
 
                 backend : "yahoo-weather",
-                instance : params.poolName,
+                instance : params.instanceName,
                 type : key,
                 deviceId : "0",
                 values : [{value : value}],
@@ -161,7 +161,7 @@ objs.wind = function () {};
                 group : "weather"
             }
 
-            params.db.save(params.poolName + "-" + key + "-0", obj);
+            params.db.save(params.instanceName + "-" + key + "-0", obj);
         }
     }
 
@@ -176,7 +176,7 @@ objs.item = function () {};
         var obj = {
 
             backend : "yahoo-weather",    
-            instance : params.poolName,
+            instance : params.instanceName,
             type : "temperature",
             deviceId : "0",
             values : [{value : temp}],
@@ -184,5 +184,5 @@ objs.item = function () {};
             group : "weather"
         }
 
-        params.db.save(params.poolName + "-" + "temperature-0", obj);
+        params.db.save(params.instanceName + "-" + "temperature-0", obj);
     }

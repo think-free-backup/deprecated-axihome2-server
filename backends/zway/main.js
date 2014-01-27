@@ -12,7 +12,7 @@ var objs = function(){};
 exports.run = function(name, poolInterval, params, db){
     
     var timer;
-    var parameters = {poolName : name, poolInterval : poolInterval, params : params, db : db, timer : timer};
+    var parameters = {instanceName : name, poolInterval : poolInterval, params : params, db : db, timer : timer};
 
     pool(parameters);
 }
@@ -46,7 +46,7 @@ function pool(params){
 
                 var dev = objs[type].create(params, idx, value.instances);
 
-                params.db.save(params.poolName + "-" + type + "-" + dev.deviceId, dev);
+                params.db.save(params.instanceName + "-" + type + "-" + dev.deviceId, dev);
             }
             catch(err){
 
@@ -91,7 +91,7 @@ objs.BinaryPowerSwitch = function () {};
         var obj = {
 
             backend : "zway",
-            instance : params.poolName,
+            instance : params.instanceName,
             type : "BinaryPowerSwitch",
             deviceId : device,
             values : [{state : stateValue}],
@@ -129,7 +129,7 @@ objs.RoutingMultilevelSwitch = function(){};
         var obj = {
 
             backend : "zway",
-            instance : params.poolName,
+            instance : params.instanceName,
             type : "RoutingMultilevelSwitch",
             deviceId : device,
             values : [{level : levelValue}],
