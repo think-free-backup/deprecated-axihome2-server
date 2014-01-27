@@ -1,3 +1,3 @@
 {
-	"nexus4-ping-0" : { "startTime" : "17:00", "endTime" : "18:00", "dayOfWeek" : [0,1,2,3,4], "conditions" : [ ["Tnexus4-ping-0", 0, "value", ">", 0] ], "scene" : "heatingStop" }
+	"nexus4-ping-0" : { "startTime" : "17:00", "endTime" : "18:00", "dayOfWeek" : [0,1,2,3,4], "conditions" : [ ["nexus4-ping-0", 0, "value", ">", 0] ], "scene" : "Dance" }
 }
