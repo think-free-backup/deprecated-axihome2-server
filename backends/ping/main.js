@@ -34,7 +34,7 @@ function pool(params){
 	    	obj.values[0].value = false;
 	    }
 
-	    m_db.save(instanceName + "-" + "ping-0", obj);
+	    m_db.save(params.instanceName + "-" + "ping-0", obj);
 	});
 
 	setTimeout(pool, params.poolInterval, params);
