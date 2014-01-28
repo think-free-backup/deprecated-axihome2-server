@@ -52,7 +52,7 @@ function pool(params){
             }
             catch(err){
 
-                log.write("zway::pool", "Unknown device found in network : " + type);
+                //log.write("zway::pool", "Unknown device found in network : " + type);
             }
         }
         client.close();
