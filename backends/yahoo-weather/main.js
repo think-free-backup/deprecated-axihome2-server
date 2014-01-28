@@ -39,23 +39,27 @@ function pool(params){
     client.get("/v1/public/yql?q=SELECT%20*%20FROM%20weather.bylocation%20WHERE%20location%3D'"+ params.params.city +"'%20AND%20unit%3D%22c%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys", function(err, req, res, obj) {
 
         if (err){
+
             console.log(err);
             setTimeout(pool, params.poolInterval * 2, params);
             return;
         }
 
-        var channels = obj.query.results.weather.rss.channel;
+        try{
+
+            var channels = obj.query.results.weather.rss.channel;    
         
-        for (var key in channels){
-            var value = channels[key];
-            
-            try{
+            for (var key in channels){
+
+                var value = channels[key];
 
                 objs[key].create(params, value);
-            }
-            catch(err){
 
             }
+        }
+        catch(err){
+
+            console.log(err);
         }
 
         client.close();
