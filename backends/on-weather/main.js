@@ -1,6 +1,7 @@
 
 var restify = require('restify');
 var db = require('../../lib/lib-database.js');
+var log = require('../../../lib/lib-log.js');
 
 // ### Local variable definition
 
@@ -35,7 +36,7 @@ function pool(params){
     client.get( params.params.path + 'api/current/summary', function(err, req, res, obj) {
 
         if (err){
-            console.log(err);
+            log.write("on-weather::pool",err);
             setTimeout(pool, params.poolInterval * 2, params);
             return;
         }
@@ -75,7 +76,7 @@ exports.write = function(params, deviceType, device, actuator, value){
     }
     catch (err){
         
-        console.log("Error calling write for device '" + deviceType + "' actuator '" + actuator + "'");
+        log.write("on-weather::write","Error calling write for device '" + deviceType + "' actuator '" + actuator + "'");
     }
 }
 

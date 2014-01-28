@@ -1,4 +1,5 @@
 var db = require('../../lib/lib-database.js');
+var log = require('../../../lib/lib-log.js');
 
 var mpd = require('mpd'),
     cmd = mpd.cmd
@@ -95,13 +96,12 @@ function connect(host, port){
 
 	client.on('ready', function() {
 
-		console.log("Connected to MPD");
+		log.write("mpd::connect", "Connected to MPD server : " + host + ":" + port);
 
 			getStatus(function(message){
 
 				state = message;
 
-				//console.log(message);
 				saveState(state, song);
 			});
 
@@ -109,7 +109,6 @@ function connect(host, port){
 
 		    	song = message;
 
-		    	//console.log(message);
 		    	saveState(state, song);
 		    });
 
@@ -139,7 +138,6 @@ function connect(host, port){
 
 		getStatus(function(message){
 
-			//console.log(message);
 			state = message;
 			saveState(state, song);
 		});
@@ -157,14 +155,12 @@ function connect(host, port){
 
 		getStatus(function(message){
 
-			//console.log(message);
 			state = message;
 			saveState(state, song);
 		});
 
 	    getCurrentSong(function(message){
 
-	    	//console.log(message);
 	    	song = message;
 	    	saveState(state, song);
 	    });

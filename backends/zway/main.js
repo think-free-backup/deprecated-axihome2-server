@@ -1,6 +1,7 @@
 
 var restify = require('restify');
 var db = require('../../lib/lib-database.js');
+var log = require('../../../lib/lib-log.js');
 
 // ### Object variable definition
 
@@ -33,7 +34,7 @@ function pool(params){
     client.get(params.params.path + 'ZWaveAPI/Data/0', function(err, req, res, obj) {
 
         if (err){
-            console.log(err);
+            log.write("zway::pool",err);
             setTimeout(pool, params.poolInterval * 2, params);
             return;
         }
@@ -51,7 +52,7 @@ function pool(params){
             }
             catch(err){
 
-                //console.log("Unknown device found in network : " + type);
+                log.write("zway::pool", "Unknown device found in network : " + type);
             }
         }
         client.close();
@@ -72,8 +73,8 @@ exports.write = function(params, deviceType, device, actuator, value){
     }
     catch (err){
         
-        console.log("Error calling write for device '" + deviceType + "' actuator '" + actuator + "'");
-        console.log(err)
+        log.write("zway::write","Error calling write for device '" + deviceType + "' actuator '" + actuator + "'");
+        log.write("zway::write",err);
     }
 }
 
@@ -111,7 +112,7 @@ objs.BinaryPowerSwitch = function () {};
         client.get('/ZWaveAPI/Run/devices[' + device + '].instances[0].commandClasses[37].Set(' + value + ')', function(err, req, res, obj) {
 
             if (err){
-                console.log("Write error : " + err);
+                log.write("zway::BinaryPowerSwitch::write","Write error : " + err);
                 return;
             }
         });
@@ -149,7 +150,7 @@ objs.RoutingMultilevelSwitch = function(){};
         client.get('/ZWaveAPI/Run/devices[' + device + '].instances[0].commandClasses[38].Set(' + value + ')', function(err, req, res, obj) {
 
             if (err){
-                console.log("Write error : " + err);
+                log.write("zway::RoutingMultilevelSwitch::write","Write error : " + err);
                 return;
             }
         });

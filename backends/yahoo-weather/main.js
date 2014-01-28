@@ -89,7 +89,7 @@ exports.write = function(params, deviceType, device, actuator, value){
     }
     catch (err){
         
-        console.log("Error calling write for device '" + deviceType + "' actuator '" + actuator + "'");
+        log.write("yahoo-weather::write","Error calling write for device '" + deviceType + "' actuator '" + actuator + "'");
     }
 }
 
