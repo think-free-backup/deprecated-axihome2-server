@@ -40,7 +40,7 @@ function pool(params){
 
         if (err){
 
-            console.log(err);
+            log.write("yahoo-weather::pool",err);
             setTimeout(pool, params.poolInterval * 2, params);
             return;
         }
@@ -53,13 +53,20 @@ function pool(params){
 
                 var value = channels[key];
 
-                objs[key].create(params, value);
+                try{
+
+                    objs[key].create(params, value);    
+                }
+                catch(err){
+
+                    log.write("yahoo-weather::pool::create",err);
+                }
 
             }
         }
         catch(err){
 
-            console.log(err);
+            log.write("yahoo-weather::pool::mainloop",err);
         }
 
         client.close();
