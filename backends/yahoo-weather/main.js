@@ -60,7 +60,7 @@ function pool(params){
                 }
                 catch(err){
 
-                    log.write("yahoo-weather::pool::create",err);
+                    log.write("yahoo-weather::pool::create",err + " (" + key +")");
                 }
 
             }
