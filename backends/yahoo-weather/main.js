@@ -1,6 +1,7 @@
 
 var restify = require('restify');
 var db = require('../../lib/lib-database.js');
+var log = require('../../../lib/lib-log.js');
 
 // ### Local variable definition
 
