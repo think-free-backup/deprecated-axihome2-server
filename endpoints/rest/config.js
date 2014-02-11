@@ -14,7 +14,7 @@ var tools = require('../../lib/lib-tools.js');
 
 exports.getAllDevices = function(req,res,next){
 
-    var dev = db.getAll();
+    var dev = db.getAllValues();
     
     res.json(dev);
 }
@@ -27,7 +27,7 @@ exports.getAllDevicesId = function(req, res, next){
     
     var js = [];
 
-    var mod = db.getAll();
+    var mod = db.getAllValues();
 
     for (var key in mod){
         var value = mod[key];

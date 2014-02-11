@@ -14,7 +14,7 @@ var config = require('../../../lib/lib-config');
 
 exports.getAllDevices = function(socket, params){
     
-    socket.send({type : "setVariable", body : {variable : "devices", option:  "", value : {devices : db.getAll() }}});
+    socket.send({type : "setVariable", body : {variable : "devices", option:  "", value : {devices : db.getAllValues() }}});
 }
 
 // ### getPlaces

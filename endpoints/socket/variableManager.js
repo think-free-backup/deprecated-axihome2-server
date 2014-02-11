@@ -9,7 +9,7 @@ var db = require('../../lib/lib-database.js');
 
 exports.request = function(socket, param){
 
-    log.write("variableManager", "Variable request received : " + param[0] + " - " + param[1]);
+	log.write("variableManager", "Variable request received : " + param[0]);
 
     var variable = db.get(param[0]);
 
