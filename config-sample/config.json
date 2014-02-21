@@ -17,7 +17,7 @@
     },
     "processExitOnError" : false,
     "logFilePath" : ".",
-    "useCouch" : false,
+    "useCouch" : true,
     "couchHost" : "http://172.16.1.6",
     "couchPort" : 5984 
 }
