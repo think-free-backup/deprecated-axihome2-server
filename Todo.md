@@ -117,3 +117,23 @@ Fixes
 
 * Mpd backend can't be instanciated more than one time
 * Configuration : Devices association : Allow to associate a device in more than one place
+
+
+
+Couch DB 
+========
+
+
+{
+   "_id": "_design/getDeviceHistory",
+   "_rev": "50-eef7c08a3929c4f8f2c9615ee28c7c10",
+   "language": "javascript",
+   "views": {
+       "getDeviceHistory": {
+           "map": "function(doc) {\n\n\temit(doc._id, { timestamp : doc._id.split('-')[3], object : doc.value });\n}"
+       }
+   }
+}
+
+
+http://localhost:5984/axihome/_design/getDeviceHistory/_view/getDeviceHistory?startkey=%22homeWeatherStation-pressure-0-0%22&endkey=%22homeWeatherStation-pressure-0-9%22
