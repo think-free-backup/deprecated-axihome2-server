@@ -6,7 +6,8 @@
   "dependencies" : {
     "mpd": "*",
     "cron" : "*",
-    "pingwrap" : "*"
+    "pingwrap" : "*",
+    "cradle" : ""
   },
   "engine": {
     "node" : ">= 0.8.8"
