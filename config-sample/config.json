@@ -16,7 +16,7 @@
         "page" : false
     },
     "processExitOnError" : false,
-    "logFilePath" : ".",
+    "logFilePath" : "/var/log/node/",
     "useCouch" : true,
     "couchHost" : "http://172.16.1.6",
     "couchPort" : 5984 
