@@ -6,35 +6,41 @@
 
 		<script type="text/javascript" src="jquery-1.11.0.min.js"></script>
 		<script type="text/javascript">
-            $(function () {
-                $('#container').highcharts({
-                    chart: {
-                        type: 'spline'
-                    },
-                    title: {
-                        text: 'Device history'
-                    },
-                    subtitle: {
-                        text: ''
-                    },
-                    xAxis: {
-                        type: 'datetime'
-                    },
-                    tooltip: {
-                        formatter: function() {
-                                return '<b>'+ this.y +'</b><br/>'+ Highcharts.dateFormat('%d/%m/%y %H:%M:%S', this.x);
-                        }
-                    },
-                    
-                    series: [{
-                        data: [
-                            [1393149301*1000, 18],
-                            [1393149601*1000, 20],
-                            [1393149901*1000, 15]
-                        ]
-                    }]
-                });
-          });
+		    $(document).ready(
+		    
+		        $.getJSON( "http://172.16.1.6:5984/axihome/_design/getDeviceHistory/_view/getDeviceHistory?startkey=%22homeWeatherStation-temperature-1-0%22&endkey=%22homeWeatherStation-temperature-1-9%22", 
+                    function (data) {
+                        console.log(data);
+                        $('#container').highcharts({
+                            chart: {
+                                type: 'spline'
+                            },
+                            title: {
+                                text: 'Device history'
+                            },
+                            subtitle: {
+                                text: ''
+                            },
+                            xAxis: {
+                                type: 'datetime'
+                            },
+                            tooltip: {
+                                formatter: function() {
+                                        return '<b>'+ this.y +'</b><br/>'+ Highcharts.dateFormat('%d/%m/%y %H:%M:%S', this.x);
+                                }
+                            },
+                            
+                            series: [{
+                                data: [
+                                    [1393149301*1000, 18],
+                                    [1393149601*1000, 20],
+                                    [1393149901*1000, 15]
+                                ]
+                            }]
+                        });
+                  }
+              )
+           );
 		</script>
 	</head>
 	<body>
