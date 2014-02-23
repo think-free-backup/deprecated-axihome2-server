@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Device history</title>
+
+		<script type="text/javascript" src="jquery-1.11.0.min.js"></script>
+		<script type="text/javascript">
+            $(function () {
+                $('#container').highcharts({
+                    chart: {
+                        type: 'spline'
+                    },
+                    title: {
+                        text: 'Device history'
+                    },
+                    subtitle: {
+                        text: ''
+                    },
+                    xAxis: {
+                        type: 'datetime'
+                    },
+                    tooltip: {
+                        formatter: function() {
+                                return '<b>'+ this.y +'</b><br/>'+ Highcharts.dateFormat('%d/%m/%y %H:%M:%S', this.x);
+                        }
+                    },
+                    
+                    series: [{
+                        data: [
+                            [1393149301*1000, 18],
+                            [1393149601*1000, 20],
+                            [1393149901*1000, 15]
+                        ]
+                    }]
+                });
+          });
+		</script>
+	</head>
+	<body>
+	
+    <script src="hightchart/js/highcharts.js"></script>
+    <script src="hightchart/js/modules/exporting.js"></script>
+
+    <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+	</body>
+</html>
