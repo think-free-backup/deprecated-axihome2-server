@@ -54,11 +54,15 @@ $(document).ready(
         )
 
         $("#startDate").kendoDateTimePicker({
-            value:new Date()
+            value:new Date(),
+            format: "dd/MM//yyyy HH:mm",
+            timeFormat: "HH:mm"
         });
 
         $("#endDate").kendoDateTimePicker({
-            value:new Date()
+            value:new Date(),
+            format: "dd/MM//yyyy HH:mm",
+            timeFormat: "HH:mm"
         });
 
         $("#loadButton").kendoButton({click: loadGraph});
