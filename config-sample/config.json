@@ -14,7 +14,7 @@
         "ssl" : false,
         "socketIo" : false,
         "static" : true,
-	    "restifystatic" : true
+        "restifystatic" : true
     },
     "processExitOnError" : false,
     "logFilePath" : "/var/log/node/",

@@ -10,12 +10,17 @@ exports.get = function(req, res, next){
 
     console.log(key + " " + tsS + " " + tsE)
 
+    console.log(config.couchHost + ':' + config.couchPort + '/');
+
     var client = restify.createJsonClient({
         url: 'http://' + config.couchHost + ':' + config.couchPort + '/',
         version: '*'
     });
 
     client.get('/axihome/_design/getDeviceHistory/_view/getDeviceHistory?startkey="' + key + '-' + tsS + '"&endkey="' + key + '-' + tsE + '"' , function(cerr, creq, cres, cobj) {
+
+	console.log(cerr);
+	
 
         var val = [];
 
