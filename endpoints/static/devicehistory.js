@@ -54,11 +54,11 @@ $(document).ready(
         )
 
         $("#startDate").kendoDateTimePicker({
-                    value:new Date()
+            value:new Date()
         });
 
         $("#endDate").kendoDateTimePicker({
-                    value:new Date()
+            value:new Date()
         });
 
         $("#loadButton").kendoButton({click: loadGraph});
