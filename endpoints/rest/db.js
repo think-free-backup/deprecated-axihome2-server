@@ -1,29 +1,46 @@
 var restify = require('restify');
 
+var config = require('../../../lib/lib-config').load('/config/config.json');
+
 exports.get = function(req, res, next){
 
+    var key = req.params.key;
+    var tsS = req.params.start;
+    var tsE = req.params.end;
 
-
-var url = "http://172.16.1.6:5984/axihome/_design/getDeviceHistory/_view/getDeviceHistory?startkey=%22homeWeatherStation-temperature-1-0%22&endkey=%22homeWeatherStation-temperature-1-9%22";
+    console.log(key + " " + tsS + " " + tsE)
 
     var client = restify.createJsonClient({
-        url: 'http://172.16.1.6:5984/',
+        url: 'http://' + config.couchHost + ':' + config.couchPort + '/',
         version: '*'
     });
 
-    client.get('/axihome/_design/getDeviceHistory/_view/getDeviceHistory?startkey="homeWeatherStation-temperature-1-0"&endkey="homeWeatherStation-temperature-1-9"' , function(cerr, creq, cres, cobj) {
+    client.get('/axihome/_design/getDeviceHistory/_view/getDeviceHistory?startkey="' + key + '-' + tsS + '"&endkey="' + key + '-' + tsE + '"' , function(cerr, creq, cres, cobj) {
 
-      var val = [];
+        var val = [];
 
-      for(var k in cobj.rows){
+        for(var k in cobj.rows){
 
-	var item = cobj.rows[k];
+            // Get the item
 
-	var v = [item.value.timestamp * 1000, item.value.object.values[0].value];
-	val.push(v);
-      }
+            var item = cobj.rows[k];
 
-      res.json(val);
+            // Get the value
+
+            var v = item.value.object.values[0].value;
+
+            if(v === true) 
+                v = 1;
+            else if(v === false) 
+                v = 0;
+
+            // Add to array
+
+	        var val = [item.value.timestamp * 1000, v];
+	        val.push(val);
+        }
+
+        res.json(val);
     })
 };
 
