@@ -4,8 +4,8 @@ function loadGraph(){
 
     console.log("Loading graph")
 
-    var start = new Date( $("#startDate").data("kendoDateTimePicker").value() ).getTime() / 1000;
-    var end = new Date(  $("#endDate").data("kendoDateTimePicker").value() ).getTime() / 1000;
+    var start = Math.round( new Date( $("#startDate").data("kendoDateTimePicker").value() ).getTime() / 1000 );
+    var end = Math.round( new Date(  $("#endDate").data("kendoDateTimePicker").value() ).getTime() / 1000 );
     var item = $("#devices-comboBox").data("kendoComboBox").value();
 
     $.getJSON( "../call/db/get?key=" + item + "&start=" + start + "&end=" + end, 
