@@ -27,7 +27,7 @@ exports.get = function(req, res, next){
 
             // Get the value
 
-            var v = item.value.object.values[0].value;
+            var v = item.value.object.values[0];
 
             if(v === true) 
                 v = 1;
