@@ -94,7 +94,7 @@ objs.BinaryPowerSwitch = function () {};
             instance : params.instanceName,
             type : "BinaryPowerSwitch",
             deviceId : device,
-            values : [{state : stateValue}],
+            values : [stateValue],
             actuators : ["setState"],
             group : "switch"
         }
@@ -132,7 +132,7 @@ objs.RoutingMultilevelSwitch = function(){};
             instance : params.instanceName,
             type : "RoutingMultilevelSwitch",
             deviceId : device,
-            values : [{level : levelValue}],
+            values : [levelValue],
             actuators : ["setLevel"],
             group : "switch"
         }

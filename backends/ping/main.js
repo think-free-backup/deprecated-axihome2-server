@@ -21,14 +21,14 @@ function pool(params){
 		    instance : params.instanceName,
 		    type : "ping",
 		    deviceId : "0",
-		    values : [{value : true}],
+		    values : [true],
 		    actuators : [],
 		    group : "presence"
 		}
 
 	    if (error){
 
-	    	obj.values[0].value = false;
+	    	obj.values[0] = false;
 	    }
 
 	    db.save(params.instanceName + "-" + "ping-0", obj);

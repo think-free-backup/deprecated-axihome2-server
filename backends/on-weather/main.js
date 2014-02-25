@@ -93,7 +93,7 @@ objs.pressure = function () {};
             instance : params.instanceName,
             type : "pressure",
             deviceId : "0",
-            values : [{value : value}],
+            values : [value],
             actuators : [],
             group : "weather"
         }
@@ -113,7 +113,7 @@ objs.rain_day_total = function () {};
             instance : params.instanceName,
             type : "rain_day",
             deviceId : "0",
-            values : [{value : value}],
+            values : [value],
             actuators : [],
             group : "weather"
         }
@@ -132,7 +132,7 @@ objs.wind_dir = function () {};
             instance : params.instanceName,
             type : "wind_dir",
             deviceId : "0",
-            values : [{value : windir[value]}],
+            values : [windir[value]],
             actuators : [],
             group : "weather"
         }
@@ -151,7 +151,7 @@ objs.wind_speed = function () {};
             instance : params.instanceName,
             type : "wind_speed",
             deviceId : "0",
-            values : [{value : value}],
+            values : [value],
             actuators : [],
             group : "weather"
         }
@@ -173,7 +173,7 @@ objs.temperature = function () {};
                 instance : params.instanceName,
                 type : "temperature",
                 deviceId : mesure.sensor,
-                values : [{value : mesure.value}],
+                values : [mesure.value],
                 actuators : [],
                 group : "weather"
             }
@@ -196,7 +196,7 @@ objs.humidity = function () {};
                 instance : params.instanceName,
                 type : "humidity",
                 deviceId : mesure.sensor,
-                values : [{value : mesure.value}],
+                values : [mesure.value],
                 actuators : [],
                 group : "weather"
             }

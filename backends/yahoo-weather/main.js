@@ -111,7 +111,7 @@ objs.atmosphere = function () {};
                 instance : params.instanceName,
                 type : key,
                 deviceId : "0",
-                values : [{value : value}],
+                values : [value],
                 actuators : [],
                 group : "weather"
             }
@@ -136,7 +136,7 @@ objs.astronomy = function () {};
                 instance : params.instanceName,
                 type : key,
                 deviceId : "0",
-                values : [{value : value}],
+                values : [value],
                 actuators : [],
                 group : "weather"
             }
@@ -169,7 +169,7 @@ objs.wind = function () {};
                 instance : params.instanceName,
                 type : key,
                 deviceId : "0",
-                values : [{value : value}],
+                values : [value],
                 actuators : [],
                 group : "weather"
             }
@@ -192,7 +192,7 @@ objs.item = function () {};
             instance : params.instanceName,
             type : "temperature",
             deviceId : "0",
-            values : [{value : temp}],
+            values : [value],
             actuators : [],
             group : "weather"
         }
