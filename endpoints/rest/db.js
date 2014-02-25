@@ -10,19 +10,14 @@ exports.get = function(req, res, next){
 
     console.log(key + " " + tsS + " " + tsE)
 
-    console.log(config.couchHost + ':' + config.couchPort + '/');
-
     var client = restify.createJsonClient({
-        url: 'http://' + config.couchHost + ':' + config.couchPort + '/',
+        url: config.couchHost + ':' + config.couchPort ,
         version: '*'
     });
 
     client.get('/axihome/_design/getDeviceHistory/_view/getDeviceHistory?startkey="' + key + '-' + tsS + '"&endkey="' + key + '-' + tsE + '"' , function(cerr, creq, cres, cobj) {
 
-	console.log(cerr);
-	
-
-        var val = [];
+	var val = [];
 
         for(var k in cobj.rows){
 
@@ -41,8 +36,8 @@ exports.get = function(req, res, next){
 
             // Add to array
 
-	        var val = [item.value.timestamp * 1000, v];
-	        val.push(val);
+	        var value = [item.value.timestamp * 1000, v];
+	        val.push(value);
         }
 
         res.json(val);
