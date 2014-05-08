@@ -135,5 +135,3 @@ Couch DB
    }
 }
 
-
-http://localhost:5984/axihome/_design/getDeviceHistory/_view/getDeviceHistory?startkey=%22homeWeatherStation-pressure-0-0%22&endkey=%22homeWeatherStation-pressure-0-9%22
